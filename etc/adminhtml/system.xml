@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="panth_indexer_manager" translate="label" type="text" sortOrder="135"
+                 showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>Indexer Manager</label>
+            <tab>panth</tab>
+            <resource>Panth_IndexerManager::config</resource>
+
+            <group id="general" translate="label" type="text" sortOrder="10"
+                   showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>General</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Indexer Manager</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable the admin indexer manager and live tracking.</comment>
+                </field>
+                <field id="strategy" translate="label comment" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Reindex Strategy</label>
+                    <source_model>Panth\IndexerManager\Model\Config\Source\Strategy</source_model>
+                    <comment><![CDATA[<b>Standard</b>: run reindex synchronously in the request.<br/>
+                        <b>Queue</b>: dispatch through the message queue (requires consumer).]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="tracking" translate="label" type="text" sortOrder="20"
+                   showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Live Tracking</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Track Reindex Runs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Persist start/end time, duration, status and message of every indexer run.</comment>
+                    <depends>
+                        <field id="panth_indexer_manager/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="track_failures_only" translate="label comment" type="select" sortOrder="20"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log Failures Only</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Skip successful runs to keep the log small.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="retention_days" translate="label comment" type="text" sortOrder="30"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Log Retention (days)</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <comment>Older log entries are removed by cron. Use 0 to keep forever.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="notifications" translate="label" type="text" sortOrder="30"
+                   showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Notifications</label>
+                <field id="notify_on_failure" translate="label comment" type="select" sortOrder="10"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Email on Reindex Failure</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="panth_indexer_manager/general/enabled">1</field>
+                    </depends>
+                </field>
+                <field id="notify_email" translate="label comment" type="text" sortOrder="20"
+                       showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Notification Email</label>
+                    <validate>validate-email</validate>
+                    <comment>Comma-separated list supported.</comment>
+                    <depends>
+                        <field id="notify_on_failure">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

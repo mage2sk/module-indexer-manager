@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Panth_IndexerManager::group"
+             title="Indexer Manager"
+             module="Panth_IndexerManager"
+             sortOrder="42"
+             parent="Panth_Core::panth_extensions"
+             resource="Panth_IndexerManager::indexer_manager"/>
+        <add id="Panth_IndexerManager::dashboard"
+             title="Dashboard"
+             module="Panth_IndexerManager"
+             sortOrder="10"
+             parent="Panth_IndexerManager::group"
+             action="panth_indexer_manager/dashboard/index"
+             resource="Panth_IndexerManager::dashboard"/>
+        <add id="Panth_IndexerManager::log"
+             title="Run Log"
+             module="Panth_IndexerManager"
+             sortOrder="20"
+             parent="Panth_IndexerManager::group"
+             action="panth_indexer_manager/log/index"
+             resource="Panth_IndexerManager::log"/>
+        <add id="Panth_IndexerManager::settings"
+             title="Configuration"
+             module="Panth_IndexerManager"
+             sortOrder="30"
+             parent="Panth_IndexerManager::group"
+             action="adminhtml/system_config/edit/section/panth_indexer_manager"
+             resource="Panth_IndexerManager::config"/>
+    </menu>
+</config>
