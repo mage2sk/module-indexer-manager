@@ -1,0 +1,307 @@
+/*!
+ * Panth_IndexerManager — admin grid + modal styles
+ */
+.panth-im { font: 13px/1.5 "Open Sans", sans-serif; color: #303030; }
+
+.panth-im__toolbar {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 12px; margin: 0 0 12px;
+}
+
+/* Toolbar injected above Magento's native indexer grid */
+.panth-im__topbar {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; margin: 0 0 12px;
+    background: #f8f8f8; border: 1px solid #e3e3e3; border-radius: 3px;
+}
+.panth-im__topbar .panth-im__live { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; user-select: none; }
+.panth-im__topbar .panth-im__last-refresh { color: #777; font-size: 12px; min-width: 150px; }
+.panth-im__topbar a { margin-left: auto; }
+
+/* Per-row Reindex / View buttons rendered inside the native grid.
+ * Sizing/typography matches Magento native .action-default; only color overridden. */
+.panth-im__row-actions { display: inline-flex; gap: 6px; white-space: nowrap; }
+.panth-im__btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 0.5rem 1.2rem !important;
+    font-size: 1.3rem !important; line-height: 1.4 !important;
+    font-weight: 600 !important;
+    border-radius: 3px !important;
+    text-decoration: none !important;
+    transition: background-color .15s ease, border-color .15s ease;
+}
+.panth-im__btn--run    { background: #f97316 !important; color: #fff !important; border: 1px solid #f97316 !important; }
+.panth-im__btn--run:hover, .panth-im__btn--run:focus { background: #ea580c !important; border-color: #ea580c !important; color: #fff !important; text-decoration: none !important; }
+.panth-im__btn--run.disabled, .panth-im__btn--run[disabled] { background: #fdba74 !important; border-color: #fdba74 !important; cursor: wait; }
+.panth-im__btn--view   { background: #fff !important; color: #f97316 !important; border: 1px solid #f97316 !important; }
+.panth-im__btn--view:hover, .panth-im__btn--view:focus { background: #fff7ed !important; color: #ea580c !important; border-color: #ea580c !important; text-decoration: none !important; }
+
+/* Distinct mass-action button variants — visual hierarchy */
+.panth-im__btn--mass-selected { background: #f97316 !important; color: #fff !important; border: 1px solid #f97316 !important; }
+.panth-im__btn--mass-selected:hover { background: #ea580c !important; border-color: #ea580c !important; }
+.panth-im__btn--mass-all      { background: #fff !important; color: #f97316 !important; border: 1px solid #f97316 !important; }
+.panth-im__btn--mass-all:hover { background: #fff7ed !important; color: #ea580c !important; border-color: #ea580c !important; }
+.panth-im__btn--mass-invalid  { background: #fff !important; color: #b91c1c !important; border: 1px solid #b91c1c !important; }
+.panth-im__btn--mass-invalid:hover { background: #fef2f2 !important; color: #7f1d1d !important; border-color: #7f1d1d !important; }
+.panth-im__btn--mass-invalid::before { content: '⚠ '; margin-right: 0.3rem; }
+
+/* Inline spinner inside a button while an action runs */
+.panth-im__btn-spinner {
+    display: inline-block; width: 1.1rem; height: 1.1rem;
+    margin-right: 0.5rem; vertical-align: middle;
+    border: 2px solid rgba(255,255,255,.5); border-top-color: #fff;
+    border-radius: 50%; animation: panth-im-spin 0.7s linear infinite;
+}
+.panth-im__btn--view .panth-im__btn-spinner,
+.panth-im__btn--mass-all .panth-im__btn-spinner,
+.panth-im__btn--mass-invalid .panth-im__btn-spinner {
+    border-color: rgba(0,0,0,.15); border-top-color: currentColor;
+}
+
+/* Live-polling indicator pulse — green dot before the label when active */
+.panth-im__live-dot {
+    display: inline-block; width: 0.8rem; height: 0.8rem;
+    border-radius: 50%; background: #16a34a; margin-right: 0.4rem;
+    box-shadow: 0 0 0 0 rgba(22,163,74,.5);
+    animation: panth-im-pulse 1.4s ease-out infinite;
+    vertical-align: middle;
+}
+.panth-im__live--off .panth-im__live-dot { background: #aaa; animation: none; box-shadow: none; }
+@keyframes panth-im-pulse {
+    0%   { box-shadow: 0 0 0 0 rgba(22,163,74,.55); }
+    70%  { box-shadow: 0 0 0 8px rgba(22,163,74,0); }
+    100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); }
+}
+
+/* Refresh button — flash effect when clicked */
+.panth-im__refresh-btn { position: relative; }
+.panth-im__refresh-btn.is-spinning { color: #f97316 !important; border-color: #f97316 !important; }
+
+/* Mass-action extras injected next to the native Actions dropdown.
+ * Magento renders the toolbar wrapper as .admin__grid-massaction with an
+ * inner .admin__grid-massaction-form that holds the dropdown + Submit. */
+.admin__grid-massaction { display: flex; flex-wrap: wrap; align-items: center; gap: 0.8rem; }
+.admin__grid-massaction-form { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.6rem; }
+.panth-im__mass-extras { display: inline-flex; gap: 0.6rem; align-items: center; }
+.panth-im__mass-right {
+    display: inline-flex; gap: 1rem; align-items: center;
+    margin-left: auto; padding-left: 1.2rem;
+    border-left: 1px solid #e3e3e3;
+}
+.panth-im__mass-right .panth-im__live {
+    display: inline-flex; gap: 0.5rem; align-items: center;
+    cursor: pointer; user-select: none;
+    font-size: 1.3rem; color: #303030;
+}
+.panth-im__mass-right .panth-im__live input { margin: 0; }
+.panth-im__mass-right .panth-im__last-refresh { color: #858585; font-size: 1.2rem; min-width: 14rem; }
+
+/* Width hints for the columns we add */
+.panth-im__col-actions { width: 170px; }
+.panth-im__col-last-run { width: 200px; }
+
+/* Normalize Mode / Status / Schedule Status badges so they all share the
+ * same height + min-width — Magento's default sizes badges to their text,
+ * which makes "READY" look tiny next to "UPDATE BY SCHEDULE". */
+.indexer-mode .grid-severity-notice,
+.indexer-mode .grid-severity-minor,
+.indexer-mode .grid-severity-major,
+.indexer-mode .grid-severity-critical,
+.indexer-status .grid-severity-notice,
+.indexer-status .grid-severity-minor,
+.indexer-status .grid-severity-major,
+.indexer-status .grid-severity-critical,
+.indexer-schedule-status .grid-severity-notice,
+.indexer-schedule-status .grid-severity-minor,
+.indexer-schedule-status .grid-severity-major,
+.indexer-schedule-status .grid-severity-critical {
+    display: inline-block;
+    min-width: 14rem;
+    padding: 0.6rem 1.2rem;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+.indexer-mode .grid-severity-notice > span,
+.indexer-mode .grid-severity-minor > span,
+.indexer-mode .grid-severity-major > span,
+.indexer-mode .grid-severity-critical > span,
+.indexer-status .grid-severity-notice > span,
+.indexer-status .grid-severity-minor > span,
+.indexer-status .grid-severity-major > span,
+.indexer-status .grid-severity-critical > span,
+.indexer-schedule-status .grid-severity-notice > span,
+.indexer-schedule-status .grid-severity-minor > span,
+.indexer-schedule-status .grid-severity-major > span,
+.indexer-schedule-status .grid-severity-critical > span {
+    display: inline; padding: 0; background: none;
+}
+/* Allow the cell itself to center the badge */
+.indexer-mode, .indexer-status, .indexer-schedule-status { text-align: center; }
+.panth-im__toolbar-left, .panth-im__toolbar-right { display: flex; gap: 8px; align-items: center; }
+.panth-im__live { display: inline-flex; gap: 6px; align-items: center; cursor: pointer; user-select: none; }
+.panth-im__last-refresh { color: #777; font-size: 12px; min-width: 130px; }
+
+.panth-im__table { width: 100%; }
+.panth-im__col-check { width: 32px; }
+.panth-im__col-actions { width: 200px; white-space: nowrap; }
+
+.panth-im__title { display: block; }
+.panth-im__id { display: block; color: #888; font-size: 11px; font-family: monospace; }
+
+.panth-im__badge {
+    display: inline-block; padding: 4px 10px; border-radius: 3px;
+    font-weight: 600; font-size: 11px; letter-spacing: 0.4px; text-transform: uppercase;
+    background: #f0f0f0;
+}
+.panth-im__badge.grid-severity-notice  { background: #d6f4d6; color: #157a3b; }
+.panth-im__badge.grid-severity-minor   { background: #fff7d4; color: #966500; }
+.panth-im__badge.grid-severity-major   { background: #ffe6cc; color: #a04300; }
+.panth-im__badge.grid-severity-critical{ background: #ffd5d5; color: #b22222; }
+
+.panth-im__spinner {
+    display: inline-block; width: 12px; height: 12px; margin-left: 8px;
+    border: 2px solid #c8c8c8; border-top-color: #1979c3; border-radius: 50%;
+    animation: panth-im-spin 0.7s linear infinite; vertical-align: middle;
+}
+@keyframes panth-im-spin { to { transform: rotate(360deg); } }
+
+.panth-im__mode-toggle {
+    background: transparent; border: 1px dashed #aaa; padding: 3px 8px;
+    border-radius: 3px; cursor: pointer; font-size: 11px;
+}
+.panth-im__mode-toggle:hover { border-style: solid; border-color: #1979c3; color: #1979c3; }
+
+.panth-im__btn-run, .panth-im__btn-view {
+    padding: 4px 10px !important; font-size: 12px !important;
+}
+
+.panth-im__last-run small { color: #777; }
+.panth-im__last-run--error { color: #b22222; }
+.panth-im__last-run--success { color: #157a3b; }
+.panth-im__last-run--running { color: #966500; }
+
+.panth-im__muted { color: #aaa; }
+
+.panth-im__msg { background: #fdf6e3; padding: 2px 6px; border-radius: 3px; font-size: 11px; }
+
+/* Toast — top-right, just below Magento's admin notification bar */
+.panth-im__toast {
+    position: fixed; top: 24px; right: 24px; z-index: 99999;
+    min-width: 280px; max-width: 480px; padding: 12px 16px;
+    border-radius: 4px; box-shadow: 0 6px 20px rgba(0,0,0,.15);
+    background: #303030; color: #fff; font-size: 13px;
+    animation: panth-im-toast-in .25s ease-out;
+}
+.panth-im__toast--success { background: #157a3b; }
+.panth-im__toast--error   { background: #b22222; }
+.panth-im__toast--info    { background: #1979c3; }
+@keyframes panth-im-toast-in {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Modal */
+.panth-im__modal {
+    position: fixed; inset: 0; z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+}
+.panth-im__modal[hidden] { display: none; }
+.panth-im__modal-backdrop {
+    position: absolute; inset: 0; background: rgba(0,0,0,.45);
+}
+.panth-im__modal-dialog {
+    position: relative; width: 720px; max-width: calc(100vw - 48px);
+    max-height: calc(100vh - 80px); overflow: auto;
+    background: #fff; border-radius: 4px; box-shadow: 0 12px 40px rgba(0,0,0,.25);
+    display: flex; flex-direction: column;
+}
+.panth-im__modal-head {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 20px; border-bottom: 1px solid #ececec;
+}
+.panth-im__modal-head h2 { margin: 0; font-size: 18px; }
+.panth-im__modal-close {
+    background: none; border: 0; font-size: 24px; line-height: 1;
+    cursor: pointer; color: #777;
+}
+.panth-im__modal-close:hover { color: #303030; }
+.panth-im__modal-body { padding: 20px; }
+.panth-im__modal-foot {
+    display: flex; justify-content: flex-end; gap: 8px;
+    padding: 12px 20px; border-top: 1px solid #ececec; background: #fafafa;
+}
+
+.panth-im__details-grid {
+    display: grid; grid-template-columns: max-content 1fr; column-gap: 16px; row-gap: 8px;
+    margin-bottom: 16px;
+}
+.panth-im__details-grid dt { color: #777; font-weight: normal; }
+.panth-im__details-grid dd { margin: 0; }
+
+.panth-im__runs-table { width: 100%; border-collapse: collapse; margin-top: 8px; }
+.panth-im__runs-table th, .panth-im__runs-table td {
+    padding: 6px 8px; border-bottom: 1px solid #f0f0f0; text-align: left; font-size: 12px;
+}
+.panth-im__runs-table th { color: #777; font-weight: 600; background: #fafafa; }
+
+/* ============================================================== */
+/* Run Log page                                                    */
+/* ============================================================== */
+
+.panth-im--log {
+    font: 1.3rem/1.5 "Open Sans", "Helvetica Neue", Arial, sans-serif;
+    color: #303030;
+}
+.panth-im--log .data-grid { font-size: 1.3rem; }
+.panth-im--log .data-grid th { font-weight: 600; color: #fff; background: #514943; padding: 1rem 1.2rem; }
+.panth-im--log .data-grid td { padding: 1rem 1.2rem; vertical-align: middle; border-bottom: 1px solid #ededed; }
+.panth-im--log .data-grid tbody tr:nth-child(even) td { background: #fafafa; }
+.panth-im--log .data-grid tbody tr:hover td { background: #fff7ed; }
+.panth-im--log .data-grid strong { font-weight: 600; }
+.panth-im--log .data-grid code.panth-im__msg {
+    font-family: "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 1.1rem;
+    background: #fdf6e3; padding: 0.2rem 0.6rem; border-radius: 3px;
+}
+
+.panth-im__topbar--log {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 1.5rem; margin: 0 0 1.5rem;
+    background: #f8f8f8; border: 1px solid #e3e3e3; border-radius: 3px;
+}
+.panth-im__topbar-title { font-size: 1.3rem; color: #303030; font-weight: 600; }
+.panth-im__topbar-right { display: inline-flex; gap: 0.8rem; align-items: center; }
+
+/* Magento-admin-style pager — borrows .admin__data-grid-pager visual cues */
+.panth-im__pager {
+    display: flex; gap: 0.4rem; align-items: center; justify-content: center;
+    margin: 1.5rem 0 0; padding: 1.2rem 1.5rem;
+    background: #f8f8f8; border: 1px solid #e3e3e3; border-radius: 3px;
+    font-size: 1.3rem;
+}
+.panth-im__pager-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-width: 3.2rem; height: 3.2rem; padding: 0 1rem;
+    background: #fff; color: #303030;
+    border: 1px solid #adadad; border-radius: 3px;
+    text-decoration: none;
+    font-size: 1.3rem; font-weight: 600; line-height: 1;
+    transition: background-color .15s ease, border-color .15s ease, color .15s ease;
+}
+.panth-im__pager-btn:hover {
+    background: #f97316; color: #fff; border-color: #f97316;
+    text-decoration: none;
+}
+.panth-im__pager-btn.is-current {
+    background: #f97316; color: #fff; border-color: #f97316; cursor: default;
+}
+.panth-im__pager-btn.is-current:hover { background: #ea580c; border-color: #ea580c; }
+.panth-im__pager-btn.is-disabled {
+    pointer-events: none; opacity: 0.4; cursor: not-allowed;
+}
+.panth-im__pager-info { margin-left: 1.5rem; color: #858585; font-size: 1.2rem; }

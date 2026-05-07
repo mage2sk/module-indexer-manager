@@ -13,13 +13,13 @@
              sortOrder="42"
              parent="Panth_Core::panth_extensions"
              resource="Panth_IndexerManager::indexer_manager"/>
-        <add id="Panth_IndexerManager::dashboard"
-             title="Dashboard"
+        <add id="Panth_IndexerManager::index_management"
+             title="Index Management"
              module="Panth_IndexerManager"
              sortOrder="10"
              parent="Panth_IndexerManager::group"
-             action="panth_indexer_manager/dashboard/index"
-             resource="Panth_IndexerManager::dashboard"/>
+             action="indexer/indexer/list"
+             resource="Panth_IndexerManager::manage"/>
         <add id="Panth_IndexerManager::log"
              title="Run Log"
              module="Panth_IndexerManager"

@@ -1,0 +1,24 @@
+{
+    "panth_indexer_manager_run_log": {
+        "column": {
+            "log_id": true,
+            "indexer_id": true,
+            "operation": true,
+            "context": true,
+            "status": true,
+            "started_at": true,
+            "finished_at": true,
+            "duration_ms": true,
+            "message": true,
+            "admin_user": true
+        },
+        "index": {
+            "PANTH_INDEXER_MANAGER_RUN_LOG_INDEXER_ID": true,
+            "PANTH_INDEXER_MANAGER_RUN_LOG_STARTED_AT": true,
+            "PANTH_INDEXER_MANAGER_RUN_LOG_STATUS": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

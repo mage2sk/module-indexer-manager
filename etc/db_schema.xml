@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="panth_indexer_manager_run_log" resource="default" engine="innodb"
+           comment="Panth Indexer Manager — reindex run history">
+        <column xsi:type="int" name="log_id" padding="10" unsigned="true" nullable="false" identity="true"
+                comment="Log ID"/>
+        <column xsi:type="varchar" name="indexer_id" length="64" nullable="false" comment="Indexer ID"/>
+        <column xsi:type="varchar" name="operation" length="32" nullable="false" default="reindexAll"
+                comment="reindexAll | reindexRow | reindexList"/>
+        <column xsi:type="varchar" name="context" length="32" nullable="false" default="unknown"
+                comment="admin | cli | cron | api | unknown"/>
+        <column xsi:type="varchar" name="status" length="16" nullable="false" default="running"
+                comment="running | success | error"/>
+        <column xsi:type="datetime" name="started_at" nullable="false" comment="Run start time"/>
+        <column xsi:type="datetime" name="finished_at" nullable="true" comment="Run end time"/>
+        <column xsi:type="int" name="duration_ms" padding="10" unsigned="true" nullable="true"
+                comment="Duration in milliseconds"/>
+        <column xsi:type="text" name="message" nullable="true" comment="Error message or extra info"/>
+        <column xsi:type="varchar" name="admin_user" length="128" nullable="true"
+                comment="Admin user who triggered (if applicable)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="log_id"/>
+        </constraint>
+        <index referenceId="PANTH_INDEXER_MANAGER_RUN_LOG_INDEXER_ID" indexType="btree">
+            <column name="indexer_id"/>
+        </index>
+        <index referenceId="PANTH_INDEXER_MANAGER_RUN_LOG_STARTED_AT" indexType="btree">
+            <column name="started_at"/>
+        </index>
+        <index referenceId="PANTH_INDEXER_MANAGER_RUN_LOG_STATUS" indexType="btree">
+            <column name="status"/>
+        </index>
+    </table>
+</schema>

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="panth_indexer_manager_failure"
+              label="Indexer Manager — Reindex Failure"
+              file="reindex_failure.html"
+              type="html"
+              module="Panth_IndexerManager"
+              area="frontend"/>
+</config>

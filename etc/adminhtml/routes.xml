@@ -10,5 +10,8 @@
         <route id="panth_indexer_manager" frontName="panth_indexer_manager">
             <module name="Panth_IndexerManager"/>
         </route>
+        <route id="indexer">
+            <module name="Panth_IndexerManager" before="Magento_Indexer"/>
+        </route>
     </router>
 </config>

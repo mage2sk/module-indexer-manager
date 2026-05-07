@@ -1,0 +1,12 @@
+<!--@subject {{var subject}} @-->
+<!--@vars {
+"var subject":"Subject",
+"var indexer_id":"Indexer ID",
+"var message":"Error message",
+"var body_html":"Pre-rendered HTML body"
+} @-->
+{{template config_path="design/email/header_template"}}
+
+{{var body_html|raw}}
+
+{{template config_path="design/email/footer_template"}}

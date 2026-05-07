@@ -11,7 +11,7 @@
             <resource id="Magento_Backend::admin">
                 <resource id="Panth_Core::panth_extensions">
                     <resource id="Panth_IndexerManager::indexer_manager" title="Indexer Manager" sortOrder="42">
-                        <resource id="Panth_IndexerManager::dashboard" title="Dashboard" sortOrder="10"/>
+                        <resource id="Panth_IndexerManager::manage" title="Manage Indexers" sortOrder="10"/>
                         <resource id="Panth_IndexerManager::log" title="Run Log" sortOrder="20"/>
                         <resource id="Panth_IndexerManager::config" title="Configuration" sortOrder="30"/>
                     </resource>

@@ -1,0 +1,74 @@
+<?php
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ *
+ * Holds JS bootstrap markup only (modal + toast + config). All visible
+ * controls (live polling toggle, mass-action buttons, log link) are
+ * injected by JS into Magento's native mass-action toolbar so they live
+ * on the same row as the Actions dropdown.
+ *
+ * @var \Panth\IndexerManager\Block\Adminhtml\Indexer\Enhancer $block
+ * @var \Magento\Framework\Escaper $escaper
+ * @var \Magento\Framework\View\Helper\SecureHtmlRenderer $secureRenderer
+ */
+
+$config = [
+    'statusUrl' => $block->getStatusUrl(),
+    'runUrl' => $block->getRunUrl(),
+    'massRunUrl' => $block->getMassRunUrl(),
+    'detailsUrl' => $block->getDetailsUrl(),
+    'modeUrl' => $block->getModeUrl(),
+    'logUrl' => $block->getLogUrl(),
+    'formKey' => $block->getFormKey(),
+    'pollInterval' => 5000,
+    'labels' => [
+        'reindexSelected' => __('Reindex Selected')->render(),
+        'reindexAll' => __('Reindex All')->render(),
+        'reindexInvalid' => __('Reindex Invalid')->render(),
+        'livePolling' => __('Live polling (5s)')->render(),
+        'refreshNow' => __('Refresh now')->render(),
+        'openRunLog' => __('Open Run Log')->render(),
+        'noSelection' => __('No indexers selected.')->render(),
+        'noInvalid' => __('No invalid indexers.')->render(),
+    ],
+];
+?>
+<div id="panth-indexer-enhancer"
+     data-panth-config='<?= /* @noEscape */ $escaper->escapeHtmlAttr(json_encode($config)) ?>'>
+
+    <div class="panth-im__modal" data-panth-role="modal" hidden>
+        <div class="panth-im__modal-backdrop" data-panth-action="close-modal"></div>
+        <div class="panth-im__modal-dialog" role="dialog" aria-modal="true" aria-labelledby="panth-im-modal-title">
+            <header class="panth-im__modal-head">
+                <h2 id="panth-im-modal-title">
+                    <span data-panth-role="modal-title"><?= /* @noEscape */ __('Indexer Details') ?></span>
+                </h2>
+                <button type="button" class="panth-im__modal-close" data-panth-action="close-modal" aria-label="Close">×</button>
+            </header>
+            <div class="panth-im__modal-body" data-panth-role="modal-body">
+                <div class="panth-im__modal-loader"><?= /* @noEscape */ __('Loading…') ?></div>
+            </div>
+            <footer class="panth-im__modal-foot">
+                <button type="button" class="action-default scalable" data-panth-action="close-modal">
+                    <span><?= /* @noEscape */ __('Close') ?></span>
+                </button>
+                <button type="button" class="action-primary action-default scalable panth-im__btn panth-im__btn--run" data-panth-action="modal-run">
+                    <span><?= /* @noEscape */ __('Reindex this') ?></span>
+                </button>
+            </footer>
+        </div>
+    </div>
+
+    <div class="panth-im__toast" data-panth-role="toast" hidden></div>
+</div>
+
+<?= /* @noEscape */ $secureRenderer->renderTag(
+    'script',
+    [
+        'type' => 'text/javascript',
+        'src' => $block->getViewFileUrl('Panth_IndexerManager::js/native-grid-enhancer.js'),
+        'defer' => 'defer',
+    ],
+    '',
+    false
+) ?>

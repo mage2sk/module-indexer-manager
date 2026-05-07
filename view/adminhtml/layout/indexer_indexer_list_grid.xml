@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ *
+ * Bolt extra columns + a "Reindex now" mass-action onto Magento's native
+ * Index Management grid, and inject the modal/JS that powers per-row
+ * actions and live polling.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Panth_IndexerManager::css/admin.css"/>
+    </head>
+    <body>
+        <referenceBlock name="adminhtml.indexer.grid.grid.massaction">
+            <arguments>
+                <argument name="options" xsi:type="array">
+                    <item name="panth_reindex_now" xsi:type="array">
+                        <item name="label" xsi:type="string" translate="true">Reindex now (Panth)</item>
+                        <item name="url" xsi:type="string">indexer/indexer/massPanthReindex</item>
+                        <item name="confirm" xsi:type="string" translate="true">Reindex the selected indexer(s) right now?</item>
+                    </item>
+                </argument>
+            </arguments>
+        </referenceBlock>
+
+        <referenceBlock name="adminhtml.indexer.grid.columnSet">
+            <block class="Magento\Backend\Block\Widget\Grid\Column" name="panth.indexer.grid.last_run" as="panth_last_run">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Last Tracked Run</argument>
+                    <argument name="index" xsi:type="string">indexer_id</argument>
+                    <argument name="renderer" xsi:type="string">Panth\IndexerManager\Block\Adminhtml\Indexer\Grid\Column\Renderer\LastRun</argument>
+                    <argument name="sortable" xsi:type="string">0</argument>
+                    <argument name="filter" xsi:type="boolean">false</argument>
+                    <argument name="column_css_class" xsi:type="string">panth-im__col-last-run</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Backend\Block\Widget\Grid\Column" name="panth.indexer.grid.actions" as="panth_actions">
+                <arguments>
+                    <argument name="header" xsi:type="string" translate="true">Actions</argument>
+                    <argument name="index" xsi:type="string">indexer_id</argument>
+                    <argument name="renderer" xsi:type="string">Panth\IndexerManager\Block\Adminhtml\Indexer\Grid\Column\Renderer\Actions</argument>
+                    <argument name="sortable" xsi:type="string">0</argument>
+                    <argument name="filter" xsi:type="boolean">false</argument>
+                    <argument name="column_css_class" xsi:type="string">panth-im__col-actions</argument>
+                </arguments>
+            </block>
+        </referenceBlock>
+
+        <referenceContainer name="content">
+            <block class="Panth\IndexerManager\Block\Adminhtml\Indexer\Enhancer"
+                   name="panth.indexer_manager.enhancer"
+                   template="Panth_IndexerManager::indexer/enhancer.phtml"
+                   before="-"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,118 @@
+<?php
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ *
+ * @var \Panth\IndexerManager\Block\Adminhtml\Log\Listing $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$rows = $block->getEntries();
+$total = $block->getTotalCount();
+$current = $block->getCurrentPage();
+$last = $block->getLastPage();
+$pageSize = \Panth\IndexerManager\Block\Adminhtml\Log\Listing::PAGE_SIZE;
+$rangeFrom = $total === 0 ? 0 : ($current - 1) * $pageSize + 1;
+$rangeTo = min($total, $current * $pageSize);
+?>
+<div id="panth-indexer-log" class="panth-im panth-im--log">
+    <div class="panth-im__topbar panth-im__topbar--log">
+        <div class="panth-im__topbar-left">
+            <strong class="panth-im__topbar-title">
+                <?php if ($total > 0): ?>
+                    <?= /* @noEscape */ __('Showing %1–%2 of %3 entries', $rangeFrom, $rangeTo, $total) ?>
+                <?php else: ?>
+                    <?= /* @noEscape */ __('No entries') ?>
+                <?php endif; ?>
+            </strong>
+        </div>
+        <div class="panth-im__topbar-right">
+            <a class="action-default scalable panth-im__btn panth-im__btn--run"
+               href="<?= $escaper->escapeUrl($block->getIndexManagementUrl()) ?>">
+                <span><?= /* @noEscape */ __('Go to Index Management') ?></span>
+            </a>
+            <a class="action-default scalable panth-im__btn panth-im__btn--view"
+               href="<?= $escaper->escapeUrl($block->getClearUrl()) ?>"
+               onclick="return confirm('<?= $escaper->escapeJs(__('Clear the entire run log?')) ?>');">
+                <span><?= /* @noEscape */ __('Clear Log') ?></span>
+            </a>
+        </div>
+    </div>
+
+    <div class="admin__data-grid-outer-wrap">
+        <div class="admin__data-grid-wrap">
+            <table class="data-grid panth-im__table">
+                <thead>
+                <tr>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Started') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Indexer') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Operation') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Context') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Status') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Duration') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Admin User') ?></th>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Message') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if (empty($rows)): ?>
+                    <tr>
+                        <td colspan="8" class="data-grid-tr-no-data">
+                            <?= /* @noEscape */ __('No runs logged yet. Trigger a reindex from Index Management to see entries here.') ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                <?php foreach ($rows as $r): ?>
+                    <?php $badge = $block->getStatusBadge((string)$r['status']); ?>
+                    <tr>
+                        <td><?= $escaper->escapeHtml((string)$r['started_at']) ?></td>
+                        <td><strong><?= $escaper->escapeHtml((string)$r['indexer_id']) ?></strong></td>
+                        <td><?= $escaper->escapeHtml((string)$r['operation']) ?></td>
+                        <td><?= $escaper->escapeHtml((string)$r['context']) ?></td>
+                        <td>
+                            <span class="<?= $escaper->escapeHtmlAttr((string)$badge['class']) ?>">
+                                <span><?= $escaper->escapeHtml((string)$badge['label']) ?></span>
+                            </span>
+                        </td>
+                        <td><?= $escaper->escapeHtml($block->formatDuration((int)$r['duration_ms'])) ?></td>
+                        <td><?= $escaper->escapeHtml((string)($r['admin_user'] ?? '—')) ?></td>
+                        <td>
+                            <?php if (!empty($r['message'])): ?>
+                                <code class="panth-im__msg"><?= $escaper->escapeHtml((string)$r['message']) ?></code>
+                            <?php else: ?>
+                                <span class="panth-im__muted">—</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php if ($last > 1): ?>
+        <nav class="panth-im__pager" aria-label="<?= $escaper->escapeHtmlAttr(__('Run log pagination')) ?>">
+            <a class="panth-im__pager-btn <?= $current <= 1 ? 'is-disabled' : '' ?>"
+               href="<?= $escaper->escapeUrl($block->getPageUrl(1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('First page')) ?>">«</a>
+            <a class="panth-im__pager-btn <?= $current <= 1 ? 'is-disabled' : '' ?>"
+               href="<?= $escaper->escapeUrl($block->getPageUrl($current - 1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Previous page')) ?>">‹</a>
+
+            <?php foreach ($block->getPageRange($current, $last) as $p): ?>
+                <a class="panth-im__pager-btn <?= $p === $current ? 'is-current' : '' ?>"
+                   href="<?= $escaper->escapeUrl($block->getPageUrl($p)) ?>"><?= (int)$p ?></a>
+            <?php endforeach; ?>
+
+            <a class="panth-im__pager-btn <?= $current >= $last ? 'is-disabled' : '' ?>"
+               href="<?= $escaper->escapeUrl($block->getPageUrl($current + 1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Next page')) ?>">›</a>
+            <a class="panth-im__pager-btn <?= $current >= $last ? 'is-disabled' : '' ?>"
+               href="<?= $escaper->escapeUrl($block->getPageUrl($last)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Last page')) ?>">»</a>
+
+            <span class="panth-im__pager-info">
+                <?= /* @noEscape */ __('Page %1 of %2', $current, $last) ?>
+            </span>
+        </nav>
+    <?php endif; ?>
+</div>

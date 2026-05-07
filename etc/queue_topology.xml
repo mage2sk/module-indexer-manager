@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/topology.xsd">
+    <exchange name="magento-db" type="topic" connection="db">
+        <binding id="panth.indexer_manager.reindex.binding"
+                 topic="panth.indexer_manager.reindex"
+                 destinationType="queue"
+                 destination="panth.indexer_manager.reindex"/>
+    </exchange>
+</config>
