@@ -12,5 +12,10 @@
              method="execute">
             <schedule>0 3 * * *</schedule>
         </job>
+        <!-- Daily heartbeat — conditional inside Cron\SendHeartbeat. -->
+        <job name="panth_indexermanager_send_heartbeat"
+             instance="Panth\IndexerManager\Cron\SendHeartbeat" method="execute">
+            <schedule>40 4 * * *</schedule>
+        </job>
     </group>
 </config>
