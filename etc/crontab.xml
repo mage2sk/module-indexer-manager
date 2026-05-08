@@ -7,15 +7,14 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
     <group id="default">
+        <job name="panth_indexermanager_send_heartbeat" instance="Panth\IndexerManager\Cron\SendHeartbeat" method="execute">
+            <schedule>40 4 * * *</schedule>
+        </job>
         <job name="panth_indexer_manager_cleanup_run_log"
              instance="Panth\IndexerManager\Cron\CleanupRunLog"
              method="execute">
             <schedule>0 3 * * *</schedule>
         </job>
         <!-- Daily heartbeat — conditional inside Cron\SendHeartbeat. -->
-        <job name="panth_indexermanager_send_heartbeat"
-             instance="Panth\IndexerManager\Cron\SendHeartbeat" method="execute">
-            <schedule>40 4 * * *</schedule>
-        </job>
     </group>
 </config>
