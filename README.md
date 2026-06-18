@@ -1,34 +1,52 @@
 <!-- SEO Meta -->
 <!--
-  Title: Panth Indexer Manager - Reindex from Admin with Live Tracking & Run Log for Magento 2 | Panth Infotech
-  Description: Panth Indexer Manager runs and tracks Magento 2 indexers from the admin. Per-row Reindex / View buttons, mass actions (Selected / All / Invalid), one-click Update by Schedule ⇄ Update on Save toggle, live status polling, full run history with duration, context (admin/cli/cron/api) and error message, retention cron, optional message-queue strategy, and email-on-failure notifications. Compatible with Magento 2.4.4 - 2.4.8, PHP 8.1 - 8.4.
-  Keywords: magento 2 reindex from admin, magento 2 indexer manager, magento 2 reindex button, magento 2 reindex log, magento 2 indexer history, magento 2 reindex queue, magento 2 indexer email alert, hyva indexer admin, magento admin reindex
+  Title: Magento 2 Indexer Manager: Reindex from Admin, Live Tracking & Run Log | Panth Infotech
+  Description: Panth Indexer Manager lets you reindex Magento 2 from the admin without touching the terminal. Per-row Reindex and View buttons, mass actions, one-click mode toggle, live status polling, full run history with duration and error messages, retention cron, queue strategy, and email alerts on failure. Works on Magento 2.4.4 to 2.4.8 and PHP 8.1 to 8.4.
+  Keywords: magento 2 reindex from admin, magento 2 indexer manager, magento 2 reindex button, magento 2 indexer log, magento 2 reindex history, magento 2 indexer admin ui, magento 2 reindex tracker, magento 2 reindex queue, magento 2 indexer email alert, magento admin reindex extension
   Author: Kishan Savaliya (Panth Infotech)
-  Canonical: https://github.com/mage2sk/module-indexer-manager
+  Canonical: https://kishansavaliya.com/magento-2-indexer-manager.html
 -->
 
-# Panth Indexer Manager — Reindex Magento 2 from the Admin with Live Tracking | Panth Infotech
+# Magento 2 Indexer Manager: Reindex from Admin with Live Tracking and Run Log (Hyva + Luma)
 
 [![Magento 2.4.4 - 2.4.8](https://img.shields.io/badge/Magento-2.4.4%20--%202.4.8-orange?logo=magento&logoColor=white)](https://magento.com)
 [![PHP 8.1 - 8.4](https://img.shields.io/badge/PHP-8.1%20--%208.4-blue?logo=php&logoColor=white)](https://php.net)
-[![Hyva Compatible](https://img.shields.io/badge/Hyva-Compatible-0D9488)](https://www.hyva.io)
+[![Hyva + Luma](https://img.shields.io/badge/Themes-Hyva%20%2B%20Luma-14b8a6)](https://www.hyva.io)
+[![Live Demo & Details](https://img.shields.io/badge/Live%20Demo%20%26%20Details-magento--2--indexer--manager-0D9488?style=flat)](https://kishansavaliya.com/magento-2-indexer-manager.html)
 [![Packagist](https://img.shields.io/badge/Packagist-mage2kishan%2Fmodule--indexer--manager-orange?logo=packagist&logoColor=white)](https://packagist.org/packages/mage2kishan/module-indexer-manager)
-[![GitHub](https://img.shields.io/badge/GitHub-mage2sk%2Fmodule--indexer--manager-181717?logo=github&logoColor=white)](https://github.com/mage2sk/module-indexer-manager)
 [![Upwork Top Rated Plus](https://img.shields.io/badge/Upwork-Top%20Rated%20Plus-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/freelancers/~016dd1767321100e21)
-[![Panth Infotech Agency](https://img.shields.io/badge/Agency-Panth%20Infotech-14a800?logo=upwork&logoColor=white)](https://www.upwork.com/agencies/1881421506131960778/)
 [![Website](https://img.shields.io/badge/Website-kishansavaliya.com-0D9488)](https://kishansavaliya.com)
 
-> **Reindex Magento 2 from the admin — without ever opening a terminal.** Per-row Reindex + View buttons, three top-row mass actions (Selected / All / Invalid), one-click Mode toggle, live status polling, full searchable run history with duration & error message, retention cron, optional message-queue strategy, and email alerts on failure.
+> **Reindex Magento 2 from the admin without opening a terminal.** Panth Indexer Manager adds per-row Reindex and View buttons to Magento's native Index Management page, plus mass actions, a one-click mode toggle, live status polling, and a full run log that captures every reindex from admin, CLI, cron, and API calls.
 
-**Panth Indexer Manager** drops a thin layer of UX on top of Magento's native Index Management page so admins, store owners, and content editors can run reindexes themselves — safely — and **see exactly what happened** afterwards. Every reindex (whether triggered from the admin, the CLI, cron, or any plugin) is captured into a dedicated **Run Log** with start/end timestamps, duration in milliseconds, context (admin / cli / cron / api), the admin user who triggered it, and the full error message if it failed.
+**Product page:** [kishansavaliya.com/magento-2-indexer-manager.html](https://kishansavaliya.com/magento-2-indexer-manager.html)
 
 ![Panth Indexer Manager — Magento 2 admin Reindex panel](docs/images/hero.png)
 
 ---
 
+## Quick Answer
+
+**What is Panth Indexer Manager?** It is a Magento 2 admin extension that adds reindex buttons and a run history log to the native Index Management page, so store owners and content editors can reindex without SSH access.
+
+**What does it add to my store?**
+
+- A **per-row Reindex button** and a **View details modal** on every indexer in the grid.
+- **Three mass action buttons**: Reindex Selected, Reindex All, and Reindex Invalid.
+- A **one-click mode toggle** to flip an indexer between Update by Schedule and Update on Save.
+- **Live status polling** every 5 seconds with a manual Refresh button.
+- A **Run Log** that records every reindex (admin, CLI, cron, or API) with duration, context, and error messages.
+- **Email alerts** when a reindex fails.
+
+**Which themes are supported?** This module is admin-only and does not touch the storefront, so it works the same on **Hyva**, **Luma**, or any custom theme.
+
+**What does it need?** Magento 2.4.4 to 2.4.8, PHP 8.1 to 8.4, and the free `mage2kishan/module-core` package.
+
+---
+
 ## 🚀 Need Custom Magento 2 Development?
 
-> **Get a free quote for your project in 24 hours** — custom modules, Hyva themes, performance optimization, M1→M2 migrations, and Adobe Commerce Cloud.
+> **Get a free quote for your project in 24 hours** for custom modules, Hyva themes, performance work, M1 to M2 migrations, and Adobe Commerce Cloud.
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -67,26 +85,15 @@ Performance • SEO • Adobe Commerce Cloud
 
 ---
 
-## See it in action
-
-![Panth Indexer Manager — live demo](docs/images/dashboard-demo.gif)
-
-> Reindex Selected, View modal, click-to-toggle Mode, live status polling, and the Run Log — all from the native Index Management page.
-
----
-
 ## Table of Contents
 
+- [Who Is It For](#who-is-it-for)
 - [Key Features](#key-features)
-- [Why You Want This](#why-you-want-this)
 - [Compatibility](#compatibility)
 - [Installation](#installation)
 - [Configuration](#configuration)
-- [Admin UI Tour](#admin-ui-tour)
-- [Reindex Strategies](#reindex-strategies)
-- [Run Log & Retention](#run-log--retention)
-- [Email Notifications](#email-notifications)
-- [Troubleshooting](#troubleshooting)
+- [How It Works](#how-it-works)
+- [Run Log and Retention](#run-log-and-retention)
 - [FAQ](#faq)
 - [Support](#support)
 - [About Panth Infotech](#about-panth-infotech)
@@ -94,65 +101,71 @@ Performance • SEO • Adobe Commerce Cloud
 
 ---
 
-## Key Features
+## Who Is It For
 
-### Reindex from the admin — with proper UX
-
-- **Per-row Reindex button** on every indexer in Magento's native **System → Index Management** grid
-- **Per-row View button** opens a details modal with status, schedule, backlog, and the **last 10 runs** for that indexer
-- **Three top-row mass actions** next to the native Actions dropdown:
-  - **Reindex Selected** — primary orange — runs the rows you've ticked
-  - **Reindex All** — outline orange — runs all 17+ indexers in one shot
-  - **Reindex Invalid** — outline red with ⚠ — runs only rows currently in *Reindex required* state
-- **Optimistic UI** — the moment you click, the affected rows flip to `PROCESSING` with a spinner; you never wonder if the click registered
-- **One-click Mode toggle** on the Mode cell — flip an indexer between **Update by Schedule** and **Update on Save** in a single click, no mass-action dropdown gymnastics
-- **Top-right toast feedback** for every action — success / error / info
-- **Live status polling** every 5 seconds with a green pulsing indicator, manual **Refresh now** button, and `Updated HH:MM:SS` timestamp
-
-### Full Run History (Run Log)
-
-- Every reindex anywhere in the system is captured — **admin clicks, CLI commands (`bin/magento indexer:reindex`), cron schedule runs, programmatic API calls** — all recorded by a plugin around `Magento\Indexer\Model\Indexer`
-- **Started, Indexer, Operation, Context, Status, Duration, Admin User, Message** — all visible in a clean paginated grid (10 per page)
-- **Error messages** preserved in full — when an indexer fails, the exception trace lands in the log so you can debug without having to reproduce
-- **Per-indexer history** in the View modal — see the last 10 runs for any single indexer
-- **One-click Clear Log** to wipe everything
-
-### Strategy Choices
-
-- **Standard (synchronous)** — runs reindex in the request thread, returns when finished (default; matches Magento's built-in behaviour)
-- **Queue (deferred)** — publishes to the `panth.indexer_manager.reindex` message-queue topic, processed by the consumer; the admin gets a "queued" toast immediately and the reindex runs in the background
-
-### Retention & Notifications
-
-- **Daily retention cron** — old log entries are pruned by age (configurable per day count, set to `0` to keep forever)
-- **Failure email alerts** — when a reindex fails, an email is sent to one or more recipients with the indexer ID, context, admin user, full error message, and a link back to the store
-- **Failures-only mode** — keep the log small by only recording failed runs
-
-### Built right
-
-- **MEQP-style code** — typed properties, strict_types, PSR-4, escapers, no `var_dump`s
-- **No core overrides** — extends Magento's native grid via layout XML + column renderers + a thin JS enhancer
-- **Hyva-friendly** — admin only, doesn't touch the storefront
-- **Translatable** — every label goes through `__()`, ships with `i18n/en_US.csv`
-- **ACL-aware** — three resources (`manage`, `log`, `config`) under `Panth Extensions`
+- **Store owners and operations teams** who need to reindex after a content change but should not need SSH or CLI access to do it.
+- **Content editors and merchandisers** who save category changes, update prices, or modify tax rules and then need to flush a specific indexer without calling a developer.
+- **Developers and DevOps teams** who want a full audit trail of every reindex across admin, CLI, cron, and API so they can debug failures and track timing.
+- **High-traffic stores** that use the queue strategy to push long reindexes to a background consumer instead of blocking the admin request.
+- **Any Magento store** that wants email alerts when a reindex throws an error, without checking log files manually.
 
 ---
 
-## Why You Want This
+## Key Features
 
-Reindexing in Magento is a daily reality — flush cache, save a category tree, change tax rules, deploy to staging — and the *out-of-the-box* tooling for non-developers is brutal:
+### Reindex Buttons on the Admin Grid
 
-1. **The native Index Management grid has no per-row Reindex button.** You either tick the row, find the right mass action, hit Submit, then re-read the page to see if it worked — or SSH in and run `bin/magento indexer:reindex catalog_product_attribute`, which most ops people can't or shouldn't do.
-2. **There is no history.** A reindex either silently succeeds or quietly fails; the only way to investigate is to scroll `var/log/exception.log` *if* exceptions happened to be logged.
-3. **There's no live feedback.** A long reindex blocks your tab and you have no idea if it's working or hung.
+- **Per-row Reindex button** on every indexer in the native System → Index Management grid.
+- **Per-row View button** that opens a details modal with status, schedule, backlog count, and the last 10 tracked runs for that indexer.
+- **Optimistic UI** - the affected rows flip to PROCESSING with a spinner the moment you click, so you know the action registered.
+- **Top-right toast notifications** for every action, whether success or error.
 
-Panth Indexer Manager fixes all three:
+![Manage Indexers grid with Last Tracked Run and Actions columns](docs/images/admin-grid.png)
 
-- Reindex any single indexer in **one click**.
-- Every run is **recorded** with duration and error.
-- The grid **updates live** every 5 seconds, and the row you clicked flashes to `PROCESSING` immediately.
+### Mass Actions
 
-It's the same UX shoppers are used to in modern admin tools — applied to one of Magento's most-used pages.
+- **Reindex Selected** runs only the rows you have ticked.
+- **Reindex All** runs all indexers in one shot.
+- **Reindex Invalid** runs only the indexers currently in Reindex required state.
+- All three buttons sit in a toolbar injected next to the native Actions dropdown, so nothing is hidden.
+
+### One-Click Mode Toggle
+
+- Click any **Mode** cell to flip an indexer between **Update by Schedule** and **Update on Save** without opening any dropdown or reloading the page.
+
+![Mode cell flipped from Schedule to On Save with a single click](docs/images/mode-toggle.png)
+
+### Live Status Polling
+
+- The grid polls for status updates every **5 seconds** with a green pulsing indicator.
+- A manual **Refresh now** button and a `Updated HH:MM:SS` timestamp are always visible.
+
+### Full Run Log
+
+- Every reindex in the system is captured - **admin clicks, CLI commands, cron schedule runs, and programmatic API calls** - all recorded by a plugin around `Magento\Indexer\Model\Indexer`.
+- The Run Log grid shows Started, Indexer, Operation, Context, Status, Duration, Admin User, and Message.
+- **Error messages are stored in full** so you can debug without reproducing the failure.
+- **One-click Clear Log** to wipe all entries.
+
+![Indexer Run Log - paginated grid with success and error badges](docs/images/run-log.png)
+
+### Reindex Strategies
+
+- **Standard (synchronous)** - runs reindex in the request thread and returns when finished. This is the default and matches Magento's built-in behavior.
+- **Queue (deferred)** - publishes to the `panth.indexer_manager.reindex` message-queue topic. The admin gets a "queued" toast immediately and the reindex runs in the background via a consumer.
+
+### Retention and Email Alerts
+
+- **Daily retention cron** prunes old log entries by age. Set to 0 to keep forever.
+- **Failures-only mode** skips successful runs so the log stays small.
+- **Failure email alerts** send an HTML email with indexer ID, context, admin user, duration, and the full error message when a reindex throws an exception.
+
+### Built to Last
+
+- **MEQP-style code** with strict types, typed properties, PSR-4 autoloading, and no `var_dump`.
+- **No core overrides** - extends Magento's native grid via layout XML, column renderers, and a thin JS enhancer.
+- **ACL-aware** with three resources (`manage`, `log`, `config`) under Panth Extensions.
+- **Translatable** - every label uses Magento's `__()` function and ships with `i18n/en_US.csv`.
 
 ---
 
@@ -162,13 +175,13 @@ It's the same UX shoppers are used to in modern admin tools — applied to one o
 |---|---|
 | Magento Open Source | 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.8 |
 | Adobe Commerce | 2.4.4, 2.4.5, 2.4.6, 2.4.7, 2.4.8 |
-| Adobe Commerce Cloud | 2.4.4 — 2.4.8 |
+| Adobe Commerce Cloud | 2.4.4 to 2.4.8 |
 | PHP | 8.1.x, 8.2.x, 8.3.x, 8.4.x |
 | MySQL | 8.0+ |
 | MariaDB | 10.4+ |
-| Hyva Theme | Admin-only — no storefront impact |
-| Luma Theme | Admin-only — no storefront impact |
-| Required Dependency | `mage2kishan/module-core` ^1.0 |
+| Hyva Theme | Admin-only, no storefront impact |
+| Luma Theme | Admin-only, no storefront impact |
+| Required Dependency | `mage2kishan/module-core` (free) |
 
 ---
 
@@ -187,10 +200,10 @@ bin/magento cache:flush
 
 ### Manual Installation via ZIP
 
-1. Download the latest release ZIP from [Packagist](https://packagist.org/packages/mage2kishan/module-indexer-manager) or [GitHub Releases](https://github.com/mage2sk/module-indexer-manager/releases).
-2. Extract the contents to `app/code/Panth/IndexerManager/` in your Magento installation.
-3. Ensure `Panth_Core` is installed (required dependency).
-4. Run the same commands as above starting from `bin/magento module:enable`.
+1. Download the latest release from [Packagist](https://packagist.org/packages/mage2kishan/module-indexer-manager) or from the [product page](https://kishansavaliya.com/magento-2-indexer-manager.html).
+2. Extract it to `app/code/Panth/IndexerManager/` in your Magento install.
+3. Make sure `Panth_Core` is installed too (required dependency).
+4. Run the commands above starting from `bin/magento module:enable`.
 
 ### Verify Installation
 
@@ -199,110 +212,69 @@ bin/magento module:status Panth_IndexerManager
 # Expected: Module is enabled
 ```
 
+After install, open:
+```
+Admin → Panth Infotech → Indexer Manager → Index Management
+```
+
 ---
 
 ## Configuration
 
-Navigate to **Admin → Stores → Configuration → Panth Extensions → Indexer Manager**.
+Go to **Stores → Configuration → Panth Extensions → Indexer Manager**.
 
-![Configuration page — General, Live Tracking, Notifications](docs/images/admin-config.png)
+![Configuration page - General, Live Tracking, Notifications](docs/images/admin-config.png)
 
-| Section | Setting | Default | Description |
+| Setting | Group | Default | Description |
 |---|---|---|---|
-| **General** | Enable Indexer Manager | Yes | Master switch. When off, run tracking and email notifications are skipped (admin reindex actions still work). |
-| **General** | Reindex Strategy | Standard | `Standard` runs reindex synchronously in the request. `Queue` dispatches to the `panth.indexer_manager.reindex` topic — requires the consumer to be running. |
-| **Live Tracking** | Track Reindex Runs | Yes | Persist start/end time, duration, status, and message of every indexer run into the `panth_indexer_manager_run_log` table. |
-| **Live Tracking** | Log Failures Only | No | Skip successful runs entirely. Keeps the log tiny if you only care about errors. |
-| **Live Tracking** | Log Retention (days) | 30 | Cron prunes entries older than this every day at 03:00. Use `0` to keep forever. |
-| **Notifications** | Email on Reindex Failure | No | When `Yes`, send an email each time a tracked reindex throws an exception. |
-| **Notifications** | Notification Email | (empty) | Comma-separated list of recipients. |
+| Enable Indexer Manager | General | Yes | Master switch. When off, run tracking and email notifications are skipped. |
+| Reindex Strategy | General | Standard | Standard runs reindex synchronously in the request. Queue dispatches to the message queue and requires the consumer to be running. |
+| Track Reindex Runs | Live Tracking | Yes | Persist start and end time, duration, status, and message of every indexer run into the `panth_indexer_manager_run_log` table. |
+| Log Failures Only | Live Tracking | No | Skip successful runs to keep the log small. |
+| Log Retention (days) | Live Tracking | 30 | Cron prunes entries older than this every day at 03:00. Use 0 to keep forever. |
+| Email on Reindex Failure | Notifications | No | When Yes, send an email each time a tracked reindex throws an exception. |
+| Notification Email | Notifications | (empty) | Comma-separated list of recipient email addresses. |
 
-All settings respect Magento's standard scope hierarchy (default → website → store view) where applicable.
+All settings apply at the default scope only (indexers are global in Magento).
 
 ---
 
-## Admin UI Tour
+## How It Works
 
-### Manage Indexers — three new columns + a top-row toolbar
+1. The module injects a **toolbar** and extra columns into Magento's native Index Management grid via layout XML and column renderers.
+2. When you click a Reindex button, a JavaScript handler sends a POST to the Run controller.
+3. The controller calls `IndexerInterface::reindexAll()` directly (Standard strategy) or publishes a message to the queue (Queue strategy).
+4. A **plugin around `IndexerInterface`** intercepts every reindex regardless of origin - admin, CLI, cron, or API - and writes a row to `panth_indexer_manager_run_log` with the operation, context, status, duration, and any error message.
+5. The Status controller returns a JSON payload for the live polling loop. The grid updates the affected rows every 5 seconds.
+6. When a run fails and notifications are enabled, an HTML email is dispatched with the full error detail.
 
-![Manage Indexers grid with Last Tracked Run + Actions columns](docs/images/admin-grid.png)
-
-Panth Indexer Manager extends Magento's native **Index Management** page with:
-
-- A new **Last Tracked Run** column showing the most recent run timestamp + duration
-- A new **Actions** column with per-row **Reindex** (filled orange) and **View** (outline orange) buttons
-- A normalized **Status** badge sized to match Mode and Schedule Status visually
-- A **top-row toolbar** injected next to the native Actions dropdown:
-  - Reindex Selected / All / Invalid mass buttons
-  - Live polling toggle with green pulsing indicator
-  - Refresh now button + last-update timestamp
-  - Open Run Log link
-
-### View Details modal — recent run history per indexer
-
-![View modal — Stock indexer details + last 10 runs](docs/images/details-modal.png)
+### View Details Modal
 
 Click **View** on any row to see:
 
-- ID, Description, Mode, Status, Schedule status, Backlog count, Last update
-- A table of the **last 10 tracked runs** for that indexer, with Started, Status badge, Duration, Context, Admin User, and the full Message (rendered as a `<code>` block for error traces)
+- ID, Description, Mode, Status, Schedule status, Backlog count, Last update.
+- A table of the **last 10 tracked runs** for that indexer, with Started, Status badge, Duration, Context, Admin User, and the full error message in a code block.
 
-### One-click Mode toggle
+![View modal - indexer details and last 10 runs](docs/images/details-modal.png)
 
-![Mode cell flipped from Schedule to On Save with a single click](docs/images/mode-toggle.png)
+### Run Log Page
 
-Click any **Mode** cell to flip between *Update by Schedule* and *Update on Save* — no mass-action dropdown, no Submit, no page reload.
+Open **Admin → Panth Infotech → Indexer Manager → Run Log**.
 
-### Run Log — paginated, searchable, exportable
-
-![Indexer Run Log — paginated grid with success/error badges](docs/images/run-log.png)
-
-Every reindex anywhere in the system is captured here:
-
-- 10 entries per page, newest first, with Magento-styled pager (`«` `‹` `1 2 3 4 5` `›` `»`)
-- Status badges: `SUCCESS` (green), `ERROR` (red), `RUNNING` (yellow)
-- Error messages rendered as monospace code blocks for legibility
-- **Go to Index Management** button (orange) and **Clear Log** button (outline) at the top right
+- 10 entries per page, newest first.
+- Status badges: SUCCESS (green), ERROR (red), RUNNING (yellow).
+- Error messages in monospace code blocks.
+- **Go to Index Management** and **Clear Log** buttons at the top right.
 
 ---
 
-## Reindex Strategies
+## Run Log and Retention
 
-### Standard (default)
-
-```
-admin clicks Reindex → Run controller → IndexerInterface::reindexAll() → response
-```
-
-Runs synchronously in the request. Best for fast indexers (< 1 second). Same code path as Magento's native mass action.
-
-### Queue (deferred)
-
-```
-admin clicks Reindex → Run controller → publish to panth.indexer_manager.reindex
-                                              ↓
-       ReindexConsumer ← message broker (DB queue, AMQP-compatible)
-```
-
-Best for long-running indexers (full catalog reindex, search rebuild). Returns immediately to the admin with a "queued" toast. To drain the queue:
-
-```bash
-bin/magento queue:consumers:start panth.indexer_manager.reindex
-```
-
-Or run it as a cron-driven consumer (see [Magento docs](https://devdocs.magento.com/guides/v2.4/extension-dev-guide/message-queues/manage-mysql.html)).
-
-The tracking plugin records the run regardless of which strategy is in use, because it wraps `IndexerInterface` itself.
-
----
-
-## Run Log & Retention
-
-The `panth_indexer_manager_run_log` table stores every captured run with:
+The `panth_indexer_manager_run_log` table stores every captured run.
 
 | Column | Type | Notes |
 |---|---|---|
-| `log_id` | int unsigned | PK |
+| `log_id` | int unsigned | Primary key |
 | `indexer_id` | varchar(64) | e.g. `catalog_product_price` |
 | `operation` | varchar(32) | `reindexAll` / `reindexRow` / `reindexList` |
 | `context` | varchar(32) | `admin` / `cli` / `cron` / `api` / `unknown` |
@@ -310,78 +282,52 @@ The `panth_indexer_manager_run_log` table stores every captured run with:
 | `started_at` | datetime | UTC |
 | `finished_at` | datetime | UTC, nullable |
 | `duration_ms` | int unsigned | nullable |
-| `message` | text | exception message on error |
-| `admin_user` | varchar(128) | username if triggered from admin |
+| `message` | text | Exception message on error |
+| `admin_user` | varchar(128) | Username if triggered from admin |
 
-Indexes on `indexer_id`, `started_at`, and `status` keep the grid responsive even with hundreds of thousands of rows.
+Indexes on `indexer_id`, `started_at`, and `status` keep the grid fast even with large tables.
 
 Retention is enforced by the daily cron `panth_indexer_manager_cleanup_run_log` (runs at 03:00 in the default group). Set **Log Retention (days) = 0** to keep entries forever.
 
 ---
 
-## Email Notifications
-
-When a reindex fails *and* notifications are enabled *and* at least one recipient is configured, an HTML email is sent containing:
-
-- Indexer ID, operation, context
-- Started / finished / duration
-- Admin user (if applicable)
-- Store name + base URL
-- Full error message in a preformatted block
-
-The email template is registered as `panth_indexer_manager_failure` and lives at `view/frontend/email/reindex_failure.html` — override it in your theme if you want to brand the message.
-
-The default sender is the store's `trans_email/ident_general` identity (Stores → Configuration → General → Store Email Addresses).
-
----
-
-## Troubleshooting
-
-| Issue | Cause | Resolution |
-|---|---|---|
-| Buttons not appearing on Index Management page | Static content not deployed | `bin/magento setup:static-content:deploy -f -a adminhtml en_US && bin/magento cache:flush` |
-| ACL not granted to admin user | New ACL resources need re-login | Log out / log in once after install |
-| Run Log is empty | Tracking disabled, or Failures Only is on | Enable **Track Reindex Runs**, disable **Failures Only** |
-| Queue strategy isn't running anything | Consumer not started | `bin/magento queue:consumers:start panth.indexer_manager.reindex` |
-| Failure emails not arriving | SMTP not configured, or email blank | Check **Stores → Configuration → Advanced → System → Mail Sending Settings**, verify the recipient list is non-empty |
-| Old log entries not pruning | Cron not running, or retention is `0` | Verify default cron group (`bin/magento cron:run --group=default`), check **Log Retention (days)** |
-| Per-row Reindex button doesn't show on a custom indexer | Custom indexer doesn't extend `Magento\Indexer\Model\Indexer` | Ensure the indexer is registered in `etc/indexer.xml` and follows Magento conventions |
-
----
-
 ## FAQ
 
-### Will this slow down my admin?
+### Does this module work on Hyva storefronts?
 
-No. The grid renderers are O(n) over the indexer list (~17 entries by default), and the live-poll endpoint is a single tiny JSON response. Tracking adds one INSERT + one UPDATE per reindex.
+Yes. The module is admin-only and does not touch the storefront. It works identically on Hyva, Luma, Breeze, or any custom theme.
 
-### Does it interfere with Magento's CLI reindex?
+### Will the reindex buttons appear for custom indexers?
 
-No — and it actually *adds* tracking to it. `bin/magento indexer:reindex` goes through `IndexerInterface`, which our plugin wraps, so the run shows up in the Run Log with `context = cli`.
+Yes, as long as the custom indexer is registered in `etc/indexer.xml` and follows Magento conventions. The buttons are rendered for every row in the native Index Management grid.
 
-### What about cron-driven reindex?
+### Does it track CLI reindexes too?
 
-Same — Magento's `indexer_reindex_all_invalid` and `indexer_update_all_views` jobs run through the same interface, so cron-triggered runs appear in the log with `context = cron`.
+Yes. `bin/magento indexer:reindex` goes through `IndexerInterface`, which the module's plugin wraps, so CLI runs appear in the Run Log with `context = cli`.
 
-### Is the queue strategy production-ready?
+### What about cron-driven reindexes?
 
-Yes. It uses Magento's standard MessageQueue framework with the DB connection, so no AMQP / RabbitMQ infrastructure is required. For higher throughput you can switch to RabbitMQ by editing `etc/queue_publisher.xml` to use a different `connection`.
+Same - Magento's `indexer_reindex_all_invalid` and `indexer_update_all_views` cron jobs run through the same interface, so those runs appear with `context = cron`.
 
-### Does it work on Hyva?
+### Is the queue strategy safe for production?
 
-The module is admin-only — it doesn't touch the storefront — so it works identically on Hyva, Luma, Breeze, or any custom theme.
+Yes. It uses Magento's standard MessageQueue framework with the DB connection by default, so no RabbitMQ or AMQP infrastructure is required. You can switch to RabbitMQ by editing `etc/queue_publisher.xml` if you need higher throughput.
 
-### Can I disable the new columns and keep just the buttons?
+### Will it slow down my admin?
 
-Yes — remove the two `<block class="...Column" name="panth.indexer.grid.last_run|actions" ...>` entries from `view/adminhtml/layout/indexer_indexer_list_grid.xml` (you'd typically do this in your custom module via `<referenceBlock remove="true">`).
+No. The grid renderers are O(n) over the indexer list (about 17 entries by default) and the live-poll endpoint returns a single small JSON response. Tracking adds one INSERT and one UPDATE per reindex.
 
-### Does it work with multi-store?
+### Can I keep the log small?
 
-Yes. Indexers are global in Magento, but the failure-notification email respects the store from which the request originated.
+Yes. Turn on **Log Failures Only** to skip successful runs. Set **Log Retention (days)** to a low number to prune old entries automatically, or use **Clear Log** to wipe everything at once.
 
-### Is Panth_Core required?
+### Is Panth Core required?
 
-Yes. `mage2kishan/module-core` is a required dependency and is pulled in automatically by Composer.
+Yes. `mage2kishan/module-core` is a free required dependency that Composer installs for you automatically.
+
+### Does it work with multi-store setups?
+
+Yes. Indexers are global in Magento, but the failure notification email is sent using the store identity from which the admin request originated.
 
 ---
 
@@ -389,6 +335,7 @@ Yes. `mage2kishan/module-core` is a required dependency and is pulled in automat
 
 | Channel | Contact |
 |---|---|
+| Product Page | [kishansavaliya.com/magento-2-indexer-manager.html](https://kishansavaliya.com/magento-2-indexer-manager.html) |
 | Email | kishansavaliyakb@gmail.com |
 | Website | [kishansavaliya.com](https://kishansavaliya.com) |
 | WhatsApp | +91 84012 70422 |
@@ -398,9 +345,9 @@ Yes. `mage2kishan/module-core` is a required dependency and is pulled in automat
 
 Response time: 1-2 business days.
 
-### 💼 Need Custom Magento Development?
+### Need Custom Magento Development?
 
-Looking for **custom Magento module development**, **Hyva theme customization**, **store migrations**, or **performance optimization**? Get a free quote in 24 hours:
+Looking for **custom Magento module development**, **Hyva theme work**, **store migrations**, or **performance tuning**? Get a free quote in 24 hours:
 
 <p align="center">
   <a href="https://kishansavaliya.com/get-quote">
@@ -417,60 +364,46 @@ Looking for **custom Magento module development**, **Hyva theme customization**,
     <img src="https://img.shields.io/badge/Visit-Panth%20Infotech%20Agency-14a800?style=for-the-badge&logo=upwork&logoColor=white" alt="Visit Agency" />
   </a>
   &nbsp;&nbsp;
-  <a href="https://kishansavaliya.com">
-    <img src="https://img.shields.io/badge/Visit%20Website-kishansavaliya.com-0D9488?style=for-the-badge" alt="Visit Website" />
+  <a href="https://kishansavaliya.com/magento-2-indexer-manager.html">
+    <img src="https://img.shields.io/badge/View%20Product%20Page-magento--2--indexer--manager-0D9488?style=for-the-badge" alt="View Product Page" />
   </a>
 </p>
-
-**Specializations:**
-
-- 🛒 **Magento 2 Module Development** — custom extensions following MEQP standards
-- 🎨 **Hyva Theme Development** — Alpine.js + Tailwind CSS, lightning-fast storefronts
-- 🖌️ **Luma Theme Customization** — pixel-perfect designs, responsive layouts
-- ⚡ **Performance Optimization** — Core Web Vitals, page speed, caching strategies
-- 🔍 **Magento SEO** — structured data, hreflang, sitemaps, AI-generated meta
-- 🛍️ **Checkout Optimization** — one-page checkout, conversion rate optimization
-- 🚀 **M1 to M2 Migrations** — data migration, custom feature porting
-- ☁️ **Adobe Commerce Cloud** — deployment, CI/CD, performance tuning
-- 🔌 **Third-party Integrations** — payment gateways, ERP, CRM, marketing tools
-
----
-
-## License
-
-Panth Indexer Manager is licensed under a proprietary license — see `LICENSE.txt`. One license per Magento installation.
 
 ---
 
 ## About Panth Infotech
 
-Built and maintained by **Kishan Savaliya** — [kishansavaliya.com](https://kishansavaliya.com) — a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
+Built and maintained by **Kishan Savaliya** ([kishansavaliya.com](https://kishansavaliya.com)), a **Top Rated Plus** Magento developer on Upwork with 10+ years of eCommerce experience.
 
-**Panth Infotech** is a Magento 2 development agency specializing in high-quality, security-focused extensions and themes for both Hyva and Luma storefronts. Our extension suite covers SEO, performance, checkout, product presentation, customer engagement, and store management — over 34 modules built to MEQP standards and tested across Magento 2.4.4 to 2.4.8.
+**Panth Infotech** is a Magento 2 development agency that builds high quality, security focused extensions and themes for both Hyva and Luma storefronts. The extension suite covers SEO, performance, checkout, product presentation, customer engagement, and store management, with each module built to MEQP standards and tested across Magento 2.4.4 to 2.4.8.
 
-Browse the full extension catalog on the [Adobe Commerce Marketplace](https://commercemarketplace.adobe.com) or [Packagist](https://packagist.org/packages/mage2kishan/).
+Browse the full extension catalog on our [Magento extensions page](https://kishansavaliya.com/magento-extensions.html) or on [Packagist](https://packagist.org/packages/mage2kishan/).
 
-### Quick Links
+---
 
-- 🌐 **Website:** [kishansavaliya.com](https://kishansavaliya.com)
-- 💬 **Get a Quote:** [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote)
-- 👨‍💻 **Upwork Profile (Top Rated Plus):** [upwork.com/freelancers/~016dd1767321100e21](https://www.upwork.com/freelancers/~016dd1767321100e21)
-- 🏢 **Upwork Agency:** [upwork.com/agencies/1881421506131960778](https://www.upwork.com/agencies/1881421506131960778/)
-- 📦 **Packagist:** [packagist.org/packages/mage2kishan/module-indexer-manager](https://packagist.org/packages/mage2kishan/module-indexer-manager)
-- 🐙 **GitHub:** [github.com/mage2sk/module-indexer-manager](https://github.com/mage2sk/module-indexer-manager)
-- 🛒 **Adobe Marketplace:** [commercemarketplace.adobe.com](https://commercemarketplace.adobe.com)
-- 📧 **Email:** kishansavaliyakb@gmail.com
-- 📱 **WhatsApp:** +91 84012 70422
+## Quick Links
+
+| Resource | Link |
+|---|---|
+| 🛒 **Product Page** | [magento-2-indexer-manager.html](https://kishansavaliya.com/magento-2-indexer-manager.html) |
+| 📦 **Packagist** | [mage2kishan/module-indexer-manager](https://packagist.org/packages/mage2kishan/module-indexer-manager) |
+| 🐙 **GitHub** | [mage2sk/module-indexer-manager](https://github.com/mage2sk/module-indexer-manager) |
+| 🌐 **Website** | [kishansavaliya.com](https://kishansavaliya.com) |
+| 💬 **Free Quote** | [kishansavaliya.com/get-quote](https://kishansavaliya.com/get-quote) |
+| 👨‍💻 **Upwork (Top Rated Plus)** | [Hire Kishan Savaliya](https://www.upwork.com/freelancers/~016dd1767321100e21) |
+| 🏢 **Upwork Agency** | [Panth Infotech](https://www.upwork.com/agencies/1881421506131960778/) |
+| 📧 **Email** | kishansavaliyakb@gmail.com |
+| 📱 **WhatsApp** | +91 84012 70422 |
 
 ---
 
 <p align="center">
   <strong>Stop SSH-ing in to reindex. Click a button instead.</strong><br/>
-  <a href="https://kishansavaliya.com/get-quote">
-    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20Get%20Started%20%E2%86%92-Free%20Quote%20in%2024h-DC2626?style=for-the-badge" alt="Get Started" />
+  <a href="https://kishansavaliya.com/magento-2-indexer-manager.html">
+    <img src="https://img.shields.io/badge/%F0%9F%9A%80%20See%20Indexer%20Manager%20%E2%86%92-Product%20Page%20%26%20Details-DC2626?style=for-the-badge" alt="See Indexer Manager" />
   </a>
 </p>
 
 ---
 
-**SEO Keywords:** magento 2 reindex from admin, magento 2 indexer manager, magento 2 reindex button, magento 2 indexer log, magento 2 reindex history, magento 2 indexer admin ui, magento 2 reindex tracker, magento 2 reindex queue, magento 2 indexer email alert, magento 2 indexer notification, magento 2 indexer dashboard, magento 2 reindex from backend, magento 2 stop using cli reindex, hyva indexer admin, magento 2 update on save toggle, magento 2 update by schedule toggle, magento 2 reindex selected, magento 2 reindex all, magento 2 reindex invalid, magento 2 indexer mode toggle, magento 2.4.8 reindex extension, magento 2 PHP 8.4 indexer, magento admin reindex extension, magento 2 indexer module, magento 2 indexer history log, mage2kishan indexer manager, panth infotech indexer manager, kishan savaliya magento, hire magento developer upwork, top rated plus magento freelancer, custom magento development, adobe commerce indexer admin
+**SEO Keywords:** magento 2 reindex from admin, magento 2 indexer manager, magento 2 reindex button, magento 2 indexer log, magento 2 reindex history, magento 2 indexer admin ui, magento 2 reindex tracker, magento 2 reindex queue, magento 2 indexer email alert, magento 2 indexer notification, magento 2 indexer dashboard, magento 2 reindex from backend, magento 2 indexer run log, magento 2 reindex without terminal, hyva indexer admin, magento 2 update on save toggle, magento 2 update by schedule toggle, magento 2 reindex selected, magento 2 reindex all, magento 2 reindex invalid, magento 2 indexer mode toggle, magento 2.4.8 reindex extension, magento 2 php 8.4 indexer, magento admin reindex extension, magento 2 indexer module, magento 2 indexer history log, mage2kishan indexer manager, panth infotech indexer manager, kishan savaliya magento, hire magento developer upwork, top rated plus magento freelancer, custom magento development, adobe commerce indexer admin
