@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Model;
@@ -34,7 +31,6 @@ class Tracker
             return null;
         }
         try {
-            /** @var RunLog $log */
             $log = $this->runLogFactory->create();
             $log->setData([
                 'indexer_id' => $indexerId,
@@ -81,25 +77,17 @@ class Tracker
         }
     }
 
-    /**
-     * Most recent run for one indexer (or null).
-     */
     public function getLatest(string $indexerId): ?RunLog
     {
         $collection = $this->collectionFactory->create()
             ->addFieldToFilter('indexer_id', $indexerId)
             ->setOrder('started_at', 'DESC')
             ->setPageSize(1);
-        /** @var RunLog|false $first */
+
         $first = $collection->getFirstItem();
         return $first && $first->getId() ? $first : null;
     }
 
-    /**
-     * Returns indexer_id => RunLog map (latest per indexer).
-     *
-     * @return RunLog[]
-     */
     public function getLatestForAll(array $indexerIds): array
     {
         if (!$indexerIds) {

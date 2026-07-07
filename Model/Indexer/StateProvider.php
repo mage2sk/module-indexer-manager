@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Model\Indexer;
@@ -12,9 +9,6 @@ use Magento\Indexer\Model\Indexer\CollectionFactory as IndexerCollectionFactory;
 use Magento\Indexer\Model\IndexerFactory;
 use Panth\IndexerManager\Model\Tracker;
 
-/**
- * Builds normalized indexer state arrays consumed by admin UI / AJAX endpoints.
- */
 class StateProvider
 {
     public function __construct(
@@ -24,15 +18,12 @@ class StateProvider
     ) {
     }
 
-    /**
-     * @return array<int, array<string, mixed>>
-     */
     public function getAll(): array
     {
         $collection = $this->indexerCollectionFactory->create();
         $rows = [];
         $ids = [];
-        /** @var IndexerInterface $indexer */
+
         foreach ($collection->getItems() as $indexer) {
             $ids[] = (string)$indexer->getId();
         }

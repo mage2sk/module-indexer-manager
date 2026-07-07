@@ -1,11 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- *
- * Routes a reindex request through the configured strategy:
- *  - "standard" (default): run reindexAll() synchronously in the request
- *  - "queue": publish to panth.indexer_manager.reindex topic; consumer picks it up
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Model\Queue;
@@ -25,11 +18,6 @@ class ReindexDispatcher
     ) {
     }
 
-    /**
-     * Returns one of:
-     *   ['mode' => 'sync',   'duration_ms' => int]
-     *   ['mode' => 'queued', 'duration_ms' => 0]
-     */
     public function dispatch(string $indexerId): array
     {
         if ($this->config->getStrategy() === 'queue') {

@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Block\Adminhtml\Log;
@@ -41,7 +38,7 @@ class Listing extends Template
     public function getEntries(): array
     {
         $rows = [];
-        /** @var RunLog $entry */
+
         foreach ($this->getCollection() as $entry) {
             $rows[] = [
                 'log_id' => (int)$entry->getId(),

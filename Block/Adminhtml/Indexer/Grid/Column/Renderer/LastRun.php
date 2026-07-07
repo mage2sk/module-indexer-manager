@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Block\Adminhtml\Indexer\Grid\Column\Renderer;
@@ -11,9 +8,6 @@ use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 use Panth\IndexerManager\Model\Tracker;
 
-/**
- * Renders the most recent tracked run for an indexer.
- */
 class LastRun extends AbstractRenderer
 {
     public function __construct(

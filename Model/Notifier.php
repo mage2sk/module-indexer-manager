@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- *
- * Sends an email when a tracked reindex fails, if the admin has enabled
- * Notifications → "Email on Reindex Failure" with at least one address.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Model;

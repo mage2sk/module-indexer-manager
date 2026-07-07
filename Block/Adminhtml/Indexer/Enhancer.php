@@ -1,16 +1,10 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Block\Adminhtml\Indexer;
 
 use Magento\Backend\Block\Template;
 
-/**
- * Renders the modal markup + JS bootstrap injected on indexer/indexer/list.
- */
 class Enhancer extends Template
 {
     public function getStatusUrl(): string

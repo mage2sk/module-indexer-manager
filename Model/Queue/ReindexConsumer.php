@@ -1,12 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- *
- * Consumer for the deferred reindex strategy. Receives an indexer ID
- * (string) from the queue and runs reindexAll(). The tracking plugin
- * picks up the run automatically because it wraps IndexerInterface
- * regardless of who invokes it.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Model\Queue;
@@ -35,7 +27,7 @@ class ReindexConsumer
             $this->logger->error('[Panth IndexerManager] queue consumer failed: ' . $e->getMessage(), [
                 'indexer_id' => $indexerId,
             ]);
-            throw $e; // let queue mark as failed for retry
+            throw $e;
         }
     }
 }

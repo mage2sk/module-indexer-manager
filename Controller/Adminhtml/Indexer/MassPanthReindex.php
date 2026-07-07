@@ -1,10 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- *
- * Handles the "Reindex now (Panth)" mass-action submitted from
- * Magento's native Index Management grid.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Controller\Adminhtml\Indexer;

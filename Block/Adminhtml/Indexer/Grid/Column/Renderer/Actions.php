@@ -1,7 +1,4 @@
 <?php
-/**
- * Copyright © Panth Infotech. All rights reserved.
- */
 declare(strict_types=1);
 
 namespace Panth\IndexerManager\Block\Adminhtml\Indexer\Grid\Column\Renderer;
@@ -10,9 +7,6 @@ use Magento\Backend\Block\Widget\Grid\Column\Renderer\AbstractRenderer;
 use Magento\Framework\DataObject;
 use Magento\Framework\Escaper;
 
-/**
- * Renders per-row Reindex + View buttons in the native Index Management grid.
- */
 class Actions extends AbstractRenderer
 {
     public function __construct(
