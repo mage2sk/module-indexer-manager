@@ -24,7 +24,7 @@ class LastRun extends AbstractRenderer
         $id = (string)$row->getIndexerId();
         $log = $id !== '' ? $this->tracker->getLatest($id) : null;
         if (!$log) {
-            return '<span class="panth-im__muted">—</span>';
+            return '<span class="panth-im__muted">-</span>';
         }
         $status = (string)$log->getData('status');
         $started = (string)$log->getData('started_at');

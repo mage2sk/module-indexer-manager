@@ -21,7 +21,7 @@
 
 **Product page:** [kishansavaliya.com/magento-2-indexer-manager.html](https://kishansavaliya.com/magento-2-indexer-manager.html)
 
-![Panth Indexer Manager — Magento 2 admin Reindex panel](docs/images/hero.png)
+![Panth Indexer Manager - Magento 2 admin Reindex panel](docs/images/hero.png)
 
 ---
 
@@ -115,7 +115,7 @@ Performance • SEO • Adobe Commerce Cloud
 
 ### Reindex Buttons on the Admin Grid
 
-- **Per-row Reindex button** on every indexer in the native System → Index Management grid.
+- **Per-row Reindex button** on every indexer in the native System -> Index Management grid.
 - **Per-row View button** that opens a details modal with status, schedule, backlog count, and the last 10 tracked runs for that indexer.
 - **Optimistic UI** - the affected rows flip to PROCESSING with a spinner the moment you click, so you know the action registered.
 - **Top-right toast notifications** for every action, whether success or error.
@@ -214,14 +214,14 @@ bin/magento module:status Panth_IndexerManager
 
 After install, open:
 ```
-Admin → Panth Infotech → Indexer Manager → Index Management
+Admin -> Panth Infotech -> Indexer Manager -> Index Management
 ```
 
 ---
 
 ## Configuration
 
-Go to **Stores → Configuration → Panth Extensions → Indexer Manager**.
+Go to **Stores -> Configuration -> Panth Extensions -> Indexer Manager**.
 
 ![Configuration page - General, Live Tracking, Notifications](docs/images/admin-config.png)
 
@@ -259,7 +259,7 @@ Click **View** on any row to see:
 
 ### Run Log Page
 
-Open **Admin → Panth Infotech → Indexer Manager → Run Log**.
+Open **Admin -> Panth Infotech -> Indexer Manager -> Run Log**.
 
 - 10 entries per page, newest first.
 - Status badges: SUCCESS (green), ERROR (red), RUNNING (yellow).

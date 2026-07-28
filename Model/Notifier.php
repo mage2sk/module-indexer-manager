@@ -43,7 +43,7 @@ class Notifier
                 'started_at'  => (string)$log->getData('started_at'),
                 'finished_at' => (string)$log->getData('finished_at'),
                 'duration_ms' => (int)$log->getData('duration_ms'),
-                'admin_user'  => (string)($log->getData('admin_user') ?? '—'),
+                'admin_user'  => (string)($log->getData('admin_user') ?? '-'),
                 'message'     => (string)$log->getData('message'),
                 'store_name'  => $this->storeManager->getStore()->getName(),
                 'store_url'   => $this->storeManager->getStore()->getBaseUrl(),

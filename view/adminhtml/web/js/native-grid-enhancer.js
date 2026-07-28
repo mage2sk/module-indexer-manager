@@ -1,5 +1,5 @@
 /**
- * Panth_IndexerManager — augments Magento's native Index Management grid.
+ * Panth_IndexerManager - augments Magento's native Index Management grid.
  *  - Per-row Reindex / View buttons (rendered server-side by our renderers)
  *  - Top-row mass buttons (Reindex Selected / All / Invalid) injected next to
  *    the native Actions dropdown's Submit button
@@ -92,7 +92,7 @@
             btn.disabled = true;
             btn.classList.add('disabled', 'is-loading');
             btn.dataset._origHtml = btn.dataset._origHtml || btn.innerHTML;
-            btn.innerHTML = '<span class="panth-im__btn-spinner" aria-hidden="true"></span><span>' + esc(label || 'Working…') + '</span>';
+            btn.innerHTML = '<span class="panth-im__btn-spinner" aria-hidden="true"></span><span>' + esc(label || 'Working...') + '</span>';
         } else {
             btn.disabled = false;
             btn.classList.remove('disabled', 'is-loading');
@@ -153,7 +153,7 @@
     }
 
     /* ------------------------------------------------------------------ */
-    /* Mode cell — click to toggle scheduled/realtime                      */
+    /* Mode cell - click to toggle scheduled/realtime                      */
 
     function bindModeCells() {
         var map = buildCellMap(true);
@@ -189,7 +189,7 @@
         var next = current === 'schedule' ? 'realtime' : 'schedule';
 
         cell.classList.add('is-saving');
-        toast('Updating mode for ' + indexerId + '…', 'info');
+        toast('Updating mode for ' + indexerId + '...', 'info');
 
         postForm(config.modeUrl, { indexer_id: indexerId, mode: next })
             .then(function (res) {
@@ -238,7 +238,7 @@
                     + (row.latest_run.duration_ms ? ' <small>(' + row.latest_run.duration_ms + ' ms)</small>' : '')
                     + '</span>';
             } else {
-                cells.lastRunCell.innerHTML = '<span class="panth-im__muted">—</span>';
+                cells.lastRunCell.innerHTML = '<span class="panth-im__muted">-</span>';
             }
         }
     }
@@ -303,8 +303,8 @@
 
     function runOne(indexerId, btn) {
         markProcessing([indexerId]);
-        setBtnLoading(btn, true, 'Reindexing…');
-        toast('Reindexing ' + indexerId + '…', 'info');
+        setBtnLoading(btn, true, 'Reindexing...');
+        toast('Reindexing ' + indexerId + '...', 'info');
         return postForm(config.runUrl, { indexer_id: indexerId })
             .then(function (res) {
                 if (res.ok && res.body && res.body.success) {
@@ -324,8 +324,8 @@
             return Promise.resolve();
         }
         markProcessing(ids);
-        setBtnLoading(btn, true, label || 'Reindexing…');
-        toast('Reindexing ' + ids.length + ' indexer(s)…', 'info');
+        setBtnLoading(btn, true, label || 'Reindexing...');
+        toast('Reindexing ' + ids.length + ' indexer(s)...', 'info');
         return postForm(config.massRunUrl, { indexer_ids: ids })
             .then(function (res) {
                 if (res.body && res.body.summary) {
@@ -347,7 +347,7 @@
     function openModal(indexerId) {
         state.currentIndexerId = indexerId;
         els.modalTitle.textContent = indexerId;
-        els.modalBody.innerHTML = '<div class="panth-im__modal-loader">Loading…</div>';
+        els.modalBody.innerHTML = '<div class="panth-im__modal-loader">Loading...</div>';
         els.modal.hidden = false;
 
         getJson(config.detailsUrl + '?indexer_id=' + encodeURIComponent(indexerId))
@@ -374,7 +374,7 @@
         var html = ''
             + '<dl class="panth-im__details-grid">'
             +   '<dt>ID</dt><dd><code>' + esc(idx.id) + '</code></dd>'
-            +   '<dt>Description</dt><dd>' + esc(idx.description || '—') + '</dd>'
+            +   '<dt>Description</dt><dd>' + esc(idx.description || '-') + '</dd>'
             +   '<dt>Mode</dt><dd>' + esc(idx.mode_label) + '</dd>'
             +   '<dt>Status</dt><dd><span class="' + idx.status_class + '"><span>'
             +     esc(idx.status_label) + '</span></span>'
@@ -384,14 +384,14 @@
                     ? '<span class="' + sched.class + '"><span>' + esc(sched.label) + '</span></span>'
                     : '<span class="panth-im__muted">N/A (real-time)</span>')
             +   '</dd>'
-            +   '<dt>Backlog</dt><dd>' + (sched.available ? sched.backlog : '—') + '</dd>'
-            +   '<dt>Last update</dt><dd>' + esc(idx.updated || '—') + '</dd>'
+            +   '<dt>Backlog</dt><dd>' + (sched.available ? sched.backlog : '-') + '</dd>'
+            +   '<dt>Last update</dt><dd>' + esc(idx.updated || '-') + '</dd>'
             + '</dl>'
             + '<h3 style="margin:16px 0 6px">Recent runs (last 10)</h3>';
 
         if (!runs || !runs.length) {
             html += '<p class="panth-im__muted">No tracked runs yet. Enable tracking under '
-                  + 'Stores → Configuration → Panth → Indexer Manager.</p>';
+                  + 'Stores -> Configuration -> Panth -> Indexer Manager.</p>';
         } else {
             html += '<table class="panth-im__runs-table"><thead><tr>'
                   + '<th>Started</th><th>Status</th><th>Duration</th><th>Context</th><th>User</th><th>Message</th>'
@@ -403,10 +403,10 @@
                 html += '<tr>'
                       + '<td>' + esc(r.started_at) + '</td>'
                       + '<td><span class="' + sevClass + '"><span>' + esc(r.status) + '</span></span></td>'
-                      + '<td>' + (r.duration_ms ? r.duration_ms + ' ms' : '—') + '</td>'
-                      + '<td>' + esc(r.context || '—') + '</td>'
-                      + '<td>' + esc(r.admin_user || '—') + '</td>'
-                      + '<td>' + (r.message ? '<code class="panth-im__msg">' + esc(r.message) + '</code>' : '—') + '</td>'
+                      + '<td>' + (r.duration_ms ? r.duration_ms + ' ms' : '-') + '</td>'
+                      + '<td>' + esc(r.context || '-') + '</td>'
+                      + '<td>' + esc(r.admin_user || '-') + '</td>'
+                      + '<td>' + (r.message ? '<code class="panth-im__msg">' + esc(r.message) + '</code>' : '-') + '</td>'
                       + '</tr>';
             });
             html += '</tbody></table>';
@@ -493,10 +493,10 @@
             openModal(t.getAttribute('data-panth-id'));
         } else if (action === 'run-selected') {
             e.preventDefault();
-            runMass(getSelectedIds(), t, 'Reindexing…');
+            runMass(getSelectedIds(), t, 'Reindexing...');
         } else if (action === 'run-all') {
             e.preventDefault();
-            runMass(getAllIds(), t, 'Reindexing all…');
+            runMass(getAllIds(), t, 'Reindexing all...');
         } else if (action === 'run-invalid') {
             e.preventDefault();
             var invalid = getInvalidIds();
@@ -504,7 +504,7 @@
                 toast(labels.noInvalid || 'No invalid indexers.', 'success');
                 return;
             }
-            runMass(invalid, t, 'Reindexing invalid…');
+            runMass(invalid, t, 'Reindexing invalid...');
         } else if (action === 'refresh-now') {
             e.preventDefault();
             poll({ fromButton: true });

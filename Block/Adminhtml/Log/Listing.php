@@ -99,7 +99,7 @@ class Listing extends Template
     public function formatDuration(int $ms): string
     {
         if ($ms <= 0) {
-            return '—';
+            return '-';
         }
         if ($ms < 1000) {
             return $ms . ' ms';

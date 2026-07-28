@@ -19,7 +19,7 @@ $rangeTo = min($total, $current * $pageSize);
         <div class="panth-im__topbar-left">
             <strong class="panth-im__topbar-title">
                 <?php if ($total > 0): ?>
-                    <?= /* @noEscape */ __('Showing %1–%2 of %3 entries', $rangeFrom, $rangeTo, $total) ?>
+                    <?= /* @noEscape */ __('Showing %1-%2 of %3 entries', $rangeFrom, $rangeTo, $total) ?>
                 <?php else: ?>
                     <?= /* @noEscape */ __('No entries') ?>
                 <?php endif; ?>
@@ -74,12 +74,12 @@ $rangeTo = min($total, $current * $pageSize);
                             </span>
                         </td>
                         <td><?= $escaper->escapeHtml($block->formatDuration((int)$r['duration_ms'])) ?></td>
-                        <td><?= $escaper->escapeHtml((string)($r['admin_user'] ?? '—')) ?></td>
+                        <td><?= $escaper->escapeHtml((string)($r['admin_user'] ?? '-')) ?></td>
                         <td>
                             <?php if (!empty($r['message'])): ?>
                                 <code class="panth-im__msg"><?= $escaper->escapeHtml((string)$r['message']) ?></code>
                             <?php else: ?>
-                                <span class="panth-im__muted">—</span>
+                                <span class="panth-im__muted">-</span>
                             <?php endif; ?>
                         </td>
                     </tr>

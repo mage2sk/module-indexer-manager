@@ -7,7 +7,7 @@
 <schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
     <table name="panth_indexer_manager_run_log" resource="default" engine="innodb"
-           comment="Panth Indexer Manager — reindex run history">
+           comment="Panth Indexer Manager - reindex run history">
         <column xsi:type="int" name="log_id" padding="10" unsigned="true" nullable="false" identity="true"
                 comment="Log ID"/>
         <column xsi:type="varchar" name="indexer_id" length="64" nullable="false" comment="Indexer ID"/>
