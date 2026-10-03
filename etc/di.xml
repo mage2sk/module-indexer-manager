@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Indexer\Model\Indexer">
+        <plugin name="panth_indexer_manager_track_runs"
+                type="Panth\IndexerManager\Plugin\IndexerTrackingPlugin"
+                sortOrder="100"/>
+    </type>
+</config>

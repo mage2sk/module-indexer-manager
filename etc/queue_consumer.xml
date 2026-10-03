@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework-message-queue:etc/consumer.xsd">
+    <consumer name="panth.indexer_manager.reindex"
+              queue="panth.indexer_manager.reindex"
+              connection="db"
+              maxMessages="1000"
+              consumerInstance="Magento\Framework\MessageQueue\Consumer"
+              handler="Panth\IndexerManager\Model\Queue\ReindexConsumer::process"/>
+</config>
