@@ -1,0 +1,211 @@
+<?php
+/**
+ * Copyright © Panth Infotech. All rights reserved.
+ *
+ * @var \Panth\IndexerManager\Block\Adminhtml\Log\Listing $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+
+$rows = $block->getEntries();
+$total = $block->getTotalCount();
+$last = $block->getLastPage();
+$current = $block->getEffectivePage();
+$pageSize = \Panth\IndexerManager\Block\Adminhtml\Log\Listing::PAGE_SIZE;
+$rangeFrom = $total === 0 ? 0 : ($current - 1) * $pageSize + 1;
+$rangeTo = min($total, $current * $pageSize);
+$filters = $block->getFilters();
+$hasFilters = $block->hasActiveFilters();
+$columns = [
+    'started_at' => __('Started'),
+    'indexer_id' => __('Indexer'),
+    'operation' => __('Operation'),
+    'context' => __('Context'),
+    'status' => __('Status'),
+    'duration_ms' => __('Duration'),
+    'admin_user' => __('Admin User'),
+];
+$statusOptions = [
+    'success' => __('Success'),
+    'error' => __('Error'),
+    'running' => __('Running'),
+];
+$contextOptions = [
+    'admin' => __('Admin'),
+    'cron' => __('Cron'),
+    'api' => __('API'),
+    'cli' => __('CLI'),
+    'unknown' => __('Unknown'),
+];
+?>
+<div id="panth-indexer-log" class="panth-im panth-im--log">
+    <div class="panth-im__topbar panth-im__topbar--log">
+        <div class="panth-im__topbar-left">
+            <strong class="panth-im__topbar-title" role="status">
+                <?php if ($total > 0): ?>
+                    <?= /* @noEscape */ __('Showing %1-%2 of %3 entries', $rangeFrom, $rangeTo, $total) ?>
+                <?php else: ?>
+                    <?= /* @noEscape */ __('No entries') ?>
+                <?php endif; ?>
+            </strong>
+        </div>
+        <div class="panth-im__topbar-right">
+            <a class="action-default scalable panth-im__btn panth-im__btn--run"
+               href="<?= $escaper->escapeUrl($block->getIndexManagementUrl()) ?>">
+                <span><?= /* @noEscape */ __('Go to Index Management') ?></span>
+            </a>
+            <form method="post" action="<?= $escaper->escapeUrl($block->getClearUrl()) ?>" class="panth-im__inline-form"
+                  onsubmit="return confirm('<?= $escaper->escapeJs(__('Clear the entire run log?')) ?>');">
+                <input type="hidden" name="form_key" value="<?= $escaper->escapeHtmlAttr($block->getFormKey()) ?>"/>
+                <button type="submit" class="action-default scalable panth-im__btn panth-im__btn--view">
+                    <span><?= /* @noEscape */ __('Clear Log') ?></span>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <form method="get" action="<?= $escaper->escapeUrl($block->getFilterUrl()) ?>" class="panth-im__filters"
+          role="search" aria-label="<?= $escaper->escapeHtmlAttr(__('Filter run log')) ?>">
+        <div class="panth-im__filter panth-im__filter--keyword">
+            <label class="panth-im__filter-label" for="panth-im-filter-q"><?= /* @noEscape */ __('Keyword') ?></label>
+            <input type="search" id="panth-im-filter-q" name="q" class="admin__control-text" maxlength="100"
+                   value="<?= $escaper->escapeHtmlAttr($filters['q']) ?>"
+                   placeholder="<?= $escaper->escapeHtmlAttr(__('Indexer, message or admin user')) ?>"/>
+        </div>
+        <div class="panth-im__filter">
+            <label class="panth-im__filter-label" for="panth-im-filter-indexer"><?= /* @noEscape */ __('Indexer') ?></label>
+            <select id="panth-im-filter-indexer" name="indexer" class="admin__control-select">
+                <option value=""><?= /* @noEscape */ __('All indexers') ?></option>
+                <?php foreach ($block->getIndexerOptions() as $indexerId): ?>
+                    <option value="<?= $escaper->escapeHtmlAttr($indexerId) ?>"<?= $filters['indexer'] === $indexerId ? ' selected' : '' ?>>
+                        <?= $escaper->escapeHtml($indexerId) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="panth-im__filter">
+            <label class="panth-im__filter-label" for="panth-im-filter-status"><?= /* @noEscape */ __('Status') ?></label>
+            <select id="panth-im-filter-status" name="status" class="admin__control-select">
+                <option value=""><?= /* @noEscape */ __('Any status') ?></option>
+                <?php foreach ($statusOptions as $value => $label): ?>
+                    <option value="<?= $escaper->escapeHtmlAttr($value) ?>"<?= $filters['status'] === $value ? ' selected' : '' ?>>
+                        <?= $escaper->escapeHtml($label) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <div class="panth-im__filter">
+            <label class="panth-im__filter-label" for="panth-im-filter-context"><?= /* @noEscape */ __('Context') ?></label>
+            <select id="panth-im-filter-context" name="context" class="admin__control-select">
+                <option value=""><?= /* @noEscape */ __('Any context') ?></option>
+                <?php foreach ($contextOptions as $value => $label): ?>
+                    <option value="<?= $escaper->escapeHtmlAttr($value) ?>"<?= $filters['context'] === $value ? ' selected' : '' ?>>
+                        <?= $escaper->escapeHtml($label) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+        <?php if ($block->getSortField() !== \Panth\IndexerManager\Block\Adminhtml\Log\Listing::DEFAULT_SORT
+            || $block->getSortDirection() !== 'DESC'): ?>
+            <input type="hidden" name="sort" value="<?= $escaper->escapeHtmlAttr($block->getSortField()) ?>"/>
+            <input type="hidden" name="dir" value="<?= $escaper->escapeHtmlAttr(strtolower($block->getSortDirection())) ?>"/>
+        <?php endif; ?>
+        <div class="panth-im__filter-actions">
+            <button type="submit" class="action-default scalable panth-im__btn panth-im__btn--run">
+                <span><?= /* @noEscape */ __('Apply Filters') ?></span>
+            </button>
+            <?php if ($hasFilters): ?>
+                <a class="action-default scalable panth-im__btn panth-im__btn--view"
+                   href="<?= $escaper->escapeUrl($block->getFilterUrl()) ?>">
+                    <span><?= /* @noEscape */ __('Reset') ?></span>
+                </a>
+            <?php endif; ?>
+        </div>
+    </form>
+
+    <div class="admin__data-grid-outer-wrap">
+        <div class="admin__data-grid-wrap">
+            <table class="data-grid panth-im__table">
+                <thead>
+                <tr>
+                    <?php foreach ($columns as $field => $label): ?>
+                        <?php $ariaSort = $block->getAriaSort($field); ?>
+                        <th class="data-grid-th _sortable<?= $ariaSort === 'ascending' ? ' _ascend' : ($ariaSort === 'descending' ? ' _descend' : '') ?>"
+                            aria-sort="<?= $escaper->escapeHtmlAttr($ariaSort) ?>">
+                            <a class="panth-im__sort-link" href="<?= $escaper->escapeUrl($block->getSortUrl($field)) ?>">
+                                <?= $escaper->escapeHtml($label) ?>
+                                <span class="panth-im__sort-icon" aria-hidden="true"><?= $ariaSort === 'ascending' ? '&#9650;' : ($ariaSort === 'descending' ? '&#9660;' : '&#8597;') ?></span>
+                            </a>
+                        </th>
+                    <?php endforeach; ?>
+                    <th class="data-grid-th"><?= /* @noEscape */ __('Message') ?></th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php if (empty($rows)): ?>
+                    <tr>
+                        <td colspan="8" class="data-grid-tr-no-data">
+                            <?php if ($hasFilters): ?>
+                                <?= /* @noEscape */ __('No runs match the current filters.') ?>
+                                <a href="<?= $escaper->escapeUrl($block->getFilterUrl()) ?>"><?= /* @noEscape */ __('Reset filters') ?></a>
+                            <?php else: ?>
+                                <?= /* @noEscape */ __('No runs logged yet. Trigger a reindex from Index Management to see entries here.') ?>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endif; ?>
+                <?php foreach ($rows as $r): ?>
+                    <?php $badge = $block->getStatusBadge((string)$r['status']); ?>
+                    <tr>
+                        <td><?= $escaper->escapeHtml((string)$r['started_at']) ?></td>
+                        <td><strong><?= $escaper->escapeHtml((string)$r['indexer_id']) ?></strong></td>
+                        <td><?= $escaper->escapeHtml((string)$r['operation']) ?></td>
+                        <td><?= $escaper->escapeHtml((string)$r['context']) ?></td>
+                        <td>
+                            <span class="<?= $escaper->escapeHtmlAttr((string)$badge['class']) ?>">
+                                <span><?= $escaper->escapeHtml((string)$badge['label']) ?></span>
+                            </span>
+                        </td>
+                        <td><?= $escaper->escapeHtml($block->formatDuration((int)$r['duration_ms'])) ?></td>
+                        <td><?= $escaper->escapeHtml((string)($r['admin_user'] ?? '-')) ?></td>
+                        <td>
+                            <?php if (!empty($r['message'])): ?>
+                                <code class="panth-im__msg"><?= $escaper->escapeHtml((string)$r['message']) ?></code>
+                            <?php else: ?>
+                                <span class="panth-im__muted">-</span>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <?php if ($last > 1): ?>
+        <nav class="panth-im__pager" aria-label="<?= $escaper->escapeHtmlAttr(__('Run log pagination')) ?>">
+            <a class="panth-im__pager-btn <?= $current <= 1 ? 'is-disabled' : '' ?>"<?= $current <= 1 ? ' aria-disabled="true" tabindex="-1"' : '' ?>
+               href="<?= $escaper->escapeUrl($block->getPageUrl(1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('First page')) ?>">«</a>
+            <a class="panth-im__pager-btn <?= $current <= 1 ? 'is-disabled' : '' ?>"<?= $current <= 1 ? ' aria-disabled="true" tabindex="-1"' : '' ?>
+               href="<?= $escaper->escapeUrl($block->getPageUrl($current - 1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Previous page')) ?>">‹</a>
+
+            <?php foreach ($block->getPageRange($current, $last) as $p): ?>
+                <a class="panth-im__pager-btn <?= $p === $current ? 'is-current' : '' ?>"
+                   href="<?= $escaper->escapeUrl($block->getPageUrl($p)) ?>"
+                   <?= $p === $current ? 'aria-current="page"' : '' ?>><?= (int)$p ?></a>
+            <?php endforeach; ?>
+
+            <a class="panth-im__pager-btn <?= $current >= $last ? 'is-disabled' : '' ?>"<?= $current >= $last ? ' aria-disabled="true" tabindex="-1"' : '' ?>
+               href="<?= $escaper->escapeUrl($block->getPageUrl($current + 1)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Next page')) ?>">›</a>
+            <a class="panth-im__pager-btn <?= $current >= $last ? 'is-disabled' : '' ?>"<?= $current >= $last ? ' aria-disabled="true" tabindex="-1"' : '' ?>
+               href="<?= $escaper->escapeUrl($block->getPageUrl($last)) ?>"
+               aria-label="<?= $escaper->escapeHtmlAttr(__('Last page')) ?>">»</a>
+
+            <span class="panth-im__pager-info">
+                <?= /* @noEscape */ __('Page %1 of %2', $current, $last) ?>
+            </span>
+        </nav>
+    <?php endif; ?>
+</div>
