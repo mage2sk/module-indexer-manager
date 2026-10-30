@@ -2,8 +2,8 @@
     "name": "mage2kishan/module-indexer-manager",
     "description": "Panth Indexer Manager \u2014 reindex Magento 2 from the admin with strategy options (sync, queue, on-save) and per-indexer live tracking, status history, and run logs.",
     "type": "magento2-module",
-    "version": "1.2.3",
-    "license": "proprietary",
+    "version": "1.2.4",
+    "license": "MIT",
     "keywords": [
         "magento2",
         "magento2-module",
